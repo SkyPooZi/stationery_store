@@ -6,7 +6,6 @@ import '../controllers/login_controller.dart';
 class LoginPage extends GetView<LoginController> {
   const LoginPage({Key? key}) : super(key: key);
 
-
   Widget text(){
     return Center(
       child: Column(
@@ -74,7 +73,7 @@ class LoginPage extends GetView<LoginController> {
           Padding( padding: EdgeInsets.symmetric(vertical: 8.0),),
           ElevatedButton(
             onPressed: () {
-
+              Get.toNamed("/home");
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Color(0xFF51321D),
@@ -86,7 +85,6 @@ class LoginPage extends GetView<LoginController> {
                 color: Colors.white
               ),
             ),
-
           ),
         ],
       ),

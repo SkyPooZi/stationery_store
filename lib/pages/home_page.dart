@@ -8,11 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: ElevatedButton(onPressed: () {
-          Get.toNamed("/login");
-        }, child: Text("Login")),
-      ),
+
     );
   }
 }
