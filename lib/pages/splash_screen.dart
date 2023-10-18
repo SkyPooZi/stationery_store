@@ -15,7 +15,7 @@ class _SplashPageState extends State<SplashPage> {
     // Add a delay to display the splash screen for a specific duration.
     Future.delayed(Duration(seconds: 3), () {
       // Replace the next line with the navigation to your main screen.
-      Get.offNamed("/register");
+      Get.offNamed("/login");
     });
   }
 

@@ -67,7 +67,7 @@ class RegisterPage extends GetView<RegisterController> {
             ),
             ElevatedButton(onPressed: () {
               controller.Register();
-              Get.toNamed("/login");
+              Get.toNamed("/home");
             }, child: Text("Register")),
           ],
         ),

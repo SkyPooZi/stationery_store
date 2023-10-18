@@ -36,9 +36,6 @@ class RegisterController extends GetxController {
     );
     try {
       if (response.statusCode == 200) {
-        final Map<String, dynamic> getToken = jsonDecode(response.body);
-        final token = getToken["token"];
-        print("Token : $token");
         Get.snackbar(
           "Success",
           "Register Success",
