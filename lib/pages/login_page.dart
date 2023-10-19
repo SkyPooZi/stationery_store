@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,18 +20,22 @@ class LoginPage extends GetView<LoginController> {
           ),
           Padding(padding: EdgeInsets.only(top: 19.0)),
           Text(
-            "Create Your Account",
+            "Login To Your Account",
             style: TextStyle(
               fontFamily: 'NotoSerifMedium',
             ),
           ),
           Padding(padding: EdgeInsets.only(top: 12.0)),
-          TextFormField(
+          TextField(
+            cursorColor: Color(0xFF51321D),
             style: TextStyle(
               color: Color(0xFF51321D),
             ),
             decoration: InputDecoration(
-              labelText: 'Username',
+              labelText: 'Email',
+              labelStyle: TextStyle(
+                color: Color(0xFF51321D),
+              ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide: BorderSide(
@@ -49,9 +54,16 @@ class LoginPage extends GetView<LoginController> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 18.0),
-            child : TextFormField(
+            child : TextField(
+              cursorColor: Color(0xFF51321D),
+              style: TextStyle(
+                color:  Color(0xFF51321D),
+              ),
               decoration: InputDecoration(
                 labelText: 'Password',
+                  labelStyle: TextStyle(
+                    color: Color(0xFF51321D),
+                  ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide: BorderSide(
@@ -71,21 +83,6 @@ class LoginPage extends GetView<LoginController> {
             ),
           ),
           Padding( padding: EdgeInsets.symmetric(vertical: 8.0),),
-          ElevatedButton(
-            onPressed: () {
-              Get.toNamed("/home");
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFF51321D),
-                minimumSize: Size.fromHeight(48.0)
-            ),
-            child: Text(
-                'Login',
-              style: TextStyle(
-                color: Colors.white
-              ),
-            ),
-          ),
         ],
       ),
     );
@@ -96,7 +93,6 @@ class LoginPage extends GetView<LoginController> {
     return Scaffold(
       body: Stack(
         children: [
-          // Background Image
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -105,22 +101,16 @@ class LoginPage extends GetView<LoginController> {
               ),
             ),
           ),
-          // Card on Top of the Background
           Center(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(36.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      SizedBox(height: 16), // Add space at the top for the image
-                      Image.asset(
-                        'assets/icon.png', // Replace with your image path
-                        width: 100, // Adjust the width as needed
-                        height: 100, // Adjust the height as needed
-                      ),
+                      SizedBox(height: 16),
                       Padding(padding: EdgeInsets.only(top : 16)),
                       Text(
                         "STATIONATOR",
@@ -130,11 +120,64 @@ class LoginPage extends GetView<LoginController> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+
                       text(),
+
+                      ElevatedButton(
+                        onPressed: () {
+                          Get.offNamed("/home");
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFF51321D),
+                            minimumSize: Size.fromHeight(48.0)
+                        ),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                              color: Colors.white
+                          ),
+                        ),
+                      ),
+
+                      Container(
+                        margin: EdgeInsets.only(top: 20.0),
+                          child: RichText(
+                            text: TextSpan(
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: "Doesn't have an account? ",
+                                  style: TextStyle(
+                                    color: Color(0xFFC19475), // Customize the text color
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "Click here",
+                                  style: TextStyle(
+                                    color: Color(0xFF51321D), // Customize the clickable text color
+                                    decoration: TextDecoration.underline, // Add underline
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      Get.toNamed("/register");
+                                    },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                     ],
                   ),
                 ),
               ),
+            ),
+          ),
+          Positioned(
+            top: 15,
+            left: 0,
+            right: 0,
+            child: Image.asset(
+              'assets/icon.png',
+              height: 135,
             ),
           ),
         ],
