@@ -5,10 +5,12 @@ import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
 
+import '../routes/route_name.dart';
+
 class LoginController extends GetxController {
   TextEditingController? cUsername;
   TextEditingController? cPass;
-  RxBool isLoading = false.obs;
+  RxBool passwordObscure = true.obs;
 
   @override
   void onInit() {
@@ -18,36 +20,49 @@ class LoginController extends GetxController {
     cPass = new TextEditingController();
   }
 
-  Login() async {
+  void togglePasswordVisibility() {
+    passwordObscure.value = !passwordObscure.value;
+  }
+
+  void Login() async {
     final baseUrl = 'https://mediadwi.com/api/latihan/login';
-    isLoading.value = true;
     final response = await http.post(
         Uri.parse(baseUrl),
         body:{
-          "username" :  cUsername!.text,
-          "password" :  cPass!.text,
-      }
+          "username" :  cUsername?.text,
+          "password" :  cPass?.text,
+      },
     );
-    try {
-      if (response.statusCode == 200) {
-        final Map<String, dynamic> getToken = jsonDecode(response.body);
-        final token = getToken["token"];
-        print("Token : $token");
-        Get.snackbar(
-          "Success",
-          "Login Success",
-          duration: Duration(seconds: 2),
-        );
-        isLoading.value = false;
-      } else {
-        Get.snackbar(
-          "Sorry",
-          "Failed Login",
-          duration: Duration(seconds: 2),
-        );
+
+    if (response.statusCode == 200) {
+      try {
+        final Map<String, dynamic> getData = jsonDecode(response.body);
+        final status = getData["status"];
+
+        if (status == true) {
+          final token = getData["token"];
+          final message = getData["message"];
+          print("Token : $token");
+          Get.snackbar(
+            "Success",
+            "$message",
+            duration: Duration(seconds: 3),
+          );
+          Get.offNamed(RouteName.home);
+        } else if (status == false) {
+          final message = getData["message"];
+          print("message : $message");
+          Get.snackbar(
+            "Failed",
+            "$message",
+            duration: Duration(seconds: 3),
+          );
+        }
+      } catch (e) {
+        print("Error parsing response: $e");
       }
-    } catch (e) {
-      print(e);
+    } else {
+      print("HTTP request failed with status code: ${response.statusCode}");
     }
   }
 }
