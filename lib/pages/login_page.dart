@@ -1,164 +1,177 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stationery_store/helper/themes.dart';
+import 'package:stationery_store/routes/route_name.dart';
 
 import '../controllers/login_controller.dart';
 
 class LoginPage extends GetView<LoginController> {
   const LoginPage({Key? key}) : super(key: key);
 
-  Widget text(){
-    return Center(
-      child: Column(
-        children: [
-          Padding(padding: EdgeInsets.only(top: 16.0)),
-          Text(
-            "Your best friend in stationery",
-            style: TextStyle(
-              fontFamily: 'NotoSerifMedium',
-            ),
+  Widget myForm(BuildContext context, IconData icon, String label, bool obscure, TextInputType inputType, TextEditingController? controller) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    return TextField(
+      controller: controller,
+      obscureText: obscure,
+      cursorColor: primaryTextColor,
+      style: textField,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        labelText: label,
+        labelStyle: TextStyle(
+          color: primaryTextColor,
+        ),
+        prefixIcon: Icon(icon, color: primaryTextColor),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.005),
+          borderSide: BorderSide(
+            color: primaryTextColor,
+            width: screenWidth * 0.005,
           ),
-          Padding(padding: EdgeInsets.only(top: 19.0)),
-          Text(
-            "Login To Your Account",
-            style: TextStyle(
-              fontFamily: 'NotoSerifMedium',
-            ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.005),
+          borderSide: BorderSide(
+            color: primaryTextColor,
+            width: screenWidth * 0.005,
           ),
-          Padding(padding: EdgeInsets.only(top: 12.0)),
-          TextField(
-            cursorColor: Color(0xFF51321D),
-            style: TextStyle(
-              color: Color(0xFF51321D),
-            ),
-            decoration: InputDecoration(
-              labelText: 'Email',
-              labelStyle: TextStyle(
-                color: Color(0xFF51321D),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                borderSide: BorderSide(
-                  color: Color(0xFF51321D),
-                  width: 2.0,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                borderSide: BorderSide(
-                  color: Color(0xFF51321D),
-                  width: 2.0,
-                ),
-              ),
-            ),
+        ),
+      ),
+    );
+  }
+
+  Widget myPassword(BuildContext context, IconData icon, String label, bool obscure, TextInputType inputType, TextEditingController? controller, void Function() togglePasswordVisibility,) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    return TextField(
+      controller: controller,
+      obscureText: obscure,
+      cursorColor: primaryTextColor,
+      style: textField,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        labelText: label,
+        labelStyle: TextStyle(
+          color: primaryTextColor,
+        ),
+        suffixIcon: IconButton(
+          icon: Icon(obscure ? Icons.visibility_off : Icons.visibility, color: primaryTextColor),
+          onPressed: togglePasswordVisibility,
+        ),
+        prefixIcon: Icon(icon, color: primaryTextColor),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.005),
+          borderSide: BorderSide(
+            color: primaryTextColor,
+            width: screenWidth * 0.005,
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 18.0),
-            child : TextField(
-              cursorColor: Color(0xFF51321D),
-              style: TextStyle(
-                color:  Color(0xFF51321D),
-              ),
-              decoration: InputDecoration(
-                labelText: 'Password',
-                  labelStyle: TextStyle(
-                    color: Color(0xFF51321D),
-                  ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(
-                    color: Color(0xFF51321D),
-                    width: 2.0,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(
-                    color: Color(0xFF51321D),
-                    width: 2.0,
-                  )
-                )
-              ),
-              obscureText: true, // Hide password
-            ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.005),
+          borderSide: BorderSide(
+            color: primaryTextColor,
+            width: screenWidth * 0.005,
           ),
-          Padding( padding: EdgeInsets.symmetric(vertical: 8.0),),
-        ],
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/login_register.png'),
+                image: AssetImage(login_register),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.only(top: screenHeight * 0.05, bottom: screenHeight * 0.05, left: screenWidth * 0.05, right: screenWidth * 0.05),
               child: Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(36.0),
+                  padding: EdgeInsets.only(top: screenHeight * 0.05, bottom: screenHeight * 0.05, left: screenWidth * 0.05, right: screenWidth * 0.05),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      SizedBox(height: 16),
-                      Padding(padding: EdgeInsets.only(top : 16)),
+                      SizedBox(height: screenHeight * 0.030),
+                      Padding(padding: EdgeInsets.only(top : screenHeight * 0.098)),
                       Text(
-                        "STATIONATOR",
-                        style: TextStyle(
-                          fontFamily: 'Lato',
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        "STATIONARY",
+                        style: titleText,
                       ),
-
-                      text(),
-
+                      Padding(padding: EdgeInsets.only(top: screenHeight * 0.030)),
+                      Text(
+                        "Your best friend in stationery",
+                        style: defaultText
+                      ),
+                      Padding(padding: EdgeInsets.only(top: screenHeight * 0.032)),
+                      Text(
+                        "Login To Your Account",
+                        style: defaultText
+                      ),
+                      Padding(padding: EdgeInsets.only(top: screenHeight * 0.020)),
+                      myForm(context, Icons.email, 'Email', false, TextInputType.emailAddress, controller.cUsername),
+                      Padding(padding: EdgeInsets.symmetric(vertical: screenHeight * 0.020)),
+                      Obx(() {
+                        return myPassword(
+                          context,
+                          Icons.lock,
+                          'Password',
+                          controller.passwordObscure.value,
+                          TextInputType.visiblePassword,
+                          controller.cPass,
+                              () {
+                            controller.togglePasswordVisibility();
+                          },
+                        );
+                      }),
+                      Padding( padding: EdgeInsets.symmetric(vertical: screenHeight * 0.020)),
                       ElevatedButton(
                         onPressed: () {
-                          Get.offNamed("/home");
+                          controller.Login();
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF51321D),
-                            minimumSize: Size.fromHeight(48.0)
+                            backgroundColor: primaryTextColor,
+                            minimumSize: Size.fromHeight(screenHeight * 0.070)
                         ),
                         child: Text(
                           'Login',
                           style: TextStyle(
-                              color: Colors.white
+                              color: primaryColor
                           ),
                         ),
                       ),
 
                       Container(
-                        margin: EdgeInsets.only(top: 20.0),
+                        margin: EdgeInsets.only(top: screenHeight * 0.030),
                           child: RichText(
                             text: TextSpan(
                               children: <TextSpan>[
                                 TextSpan(
                                   text: "Doesn't have an account? ",
                                   style: TextStyle(
-                                    color: Color(0xFFC19475), // Customize the text color
+                                    color: secondTextColor, // Customize the text color
                                   ),
                                 ),
                                 TextSpan(
                                   text: "Click here",
                                   style: TextStyle(
-                                    color: Color(0xFF51321D), // Customize the clickable text color
+                                    color: primaryTextColor, // Customize the clickable text color
                                     decoration: TextDecoration.underline, // Add underline
                                   ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      Get.toNamed("/register");
+                                      Get.toNamed(RouteName.register);
                                     },
                                 ),
                               ],
@@ -172,12 +185,12 @@ class LoginPage extends GetView<LoginController> {
             ),
           ),
           Positioned(
-            top: 15,
-            left: 0,
-            right: 0,
+            top: screenHeight * 0.13,
+            left: screenWidth * 0.0,
+            right: screenWidth * 0.0,
             child: Image.asset(
-              'assets/icon.png',
-              height: 135,
+              icon,
+              height: screenHeight * 0.135,
             ),
           ),
         ],
