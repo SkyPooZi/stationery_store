@@ -2,245 +2,194 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stationery_store/controllers/register_controller.dart';
 
+import '../helper/themes.dart';
+
 class RegisterPage extends GetView<RegisterController> {
   const RegisterPage({Key? key}) : super(key: key);
 
-  Widget icon(){
-    return Center(
-      child: Padding(
-        padding: EdgeInsets.only(top: 10.0),
-        child: Positioned(
-          bottom: 10,
-          child: Image.asset(
-            'assets/icon.png',
-            height: 110,
+  Widget myForm(BuildContext context, IconData icon, String label, bool obscure, TextInputType inputType, TextEditingController? controller) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    return TextField(
+      controller: controller,
+      obscureText: obscure,
+      cursorColor: primaryTextColor,
+      style: textField,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        labelText: label,
+        labelStyle: TextStyle(
+          color: primaryTextColor,
+        ),
+        prefixIcon: Icon(icon, color: primaryTextColor),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.005),
+          borderSide: BorderSide(
+            color: primaryTextColor,
+            width: screenWidth * 0.005,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.005),
+          borderSide: BorderSide(
+            color: primaryTextColor,
+            width: screenWidth * 0.005,
           ),
         ),
       ),
     );
   }
 
-  Widget text(){
-    return Center(
-      child: Column(
-        children: [
-          Padding(padding: EdgeInsets.only(top: 16.0)),
-          Text(
-            "Create Your Account",
-            style: TextStyle(
-              fontFamily: 'NotoSerifMedium',
-            ),
+  Widget myPassword(BuildContext context, IconData icon, String label, bool obscure, TextInputType inputType, TextEditingController? controller, void Function() togglePasswordVisibility,) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    return TextField(
+      controller: controller,
+      obscureText: obscure,
+      cursorColor: primaryTextColor,
+      style: textField,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        labelText: label,
+        labelStyle: TextStyle(
+          color: primaryTextColor,
+        ),
+        suffixIcon: IconButton(
+          icon: Icon(obscure ? Icons.visibility_off : Icons.visibility, color: primaryTextColor),
+          onPressed: togglePasswordVisibility,
+        ),
+        prefixIcon: Icon(icon, color: primaryTextColor),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.005),
+          borderSide: BorderSide(
+            color: primaryTextColor,
+            width: screenWidth * 0.005,
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 18.0, right: 18.0, top: 20.0),
-            child : TextField(
-              controller: controller.cName,
-              cursorColor: Color(0xFF51321D),
-              style: TextStyle(
-                color:  Color(0xFF51321D),
-              ),
-              decoration: InputDecoration(
-                  labelText: 'Name',
-                  labelStyle: TextStyle(
-                    color: Color(0xFF51321D),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide(
-                      color: Color(0xFF51321D),
-                      width: 2.0,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF51321D),
-                        width: 2.0,
-                      )
-                  )
-              ),
-              obscureText: true, // Hide password
-            ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.005),
+          borderSide: BorderSide(
+            color: primaryTextColor,
+            width: screenWidth * 0.005,
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 18.0, right: 18.0, top: 8.0),
-            child : TextField(
-              controller: controller.cUsername,
-              cursorColor: Color(0xFF51321D),
-              style: TextStyle(
-                color:  Color(0xFF51321D),
-              ),
-              decoration: InputDecoration(
-                  labelText: 'Username',
-                  labelStyle: TextStyle(
-                    color: Color(0xFF51321D),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide(
-                      color: Color(0xFF51321D),
-                      width: 2.0,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF51321D),
-                        width: 2.0,
-                      )
-                  )
-              ),
-              obscureText: true, // Hide password
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 18.0, right: 18.0, top: 8.0),
-            child : TextField(
-              controller: controller.cEmail,
-              cursorColor: Color(0xFF51321D),
-              style: TextStyle(
-                color:  Color(0xFF51321D),
-              ),
-              decoration: InputDecoration(
-                  labelText: 'Email',
-                  labelStyle: TextStyle(
-                    color: Color(0xFF51321D),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide(
-                      color: Color(0xFF51321D),
-                      width: 2.0,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF51321D),
-                        width: 2.0,
-                      )
-                  )
-              ),
-              obscureText: true, // Hide password
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 18.0, right: 18.0, top: 8.0),
-            child : TextField(
-              controller: controller.cPass,
-              cursorColor: Color(0xFF51321D),
-              style: TextStyle(
-                color:  Color(0xFF51321D),
-              ),
-              decoration: InputDecoration(
-                  labelText: 'Password',
-                  labelStyle: TextStyle(
-                    color: Color(0xFF51321D),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide(
-                      color: Color(0xFF51321D),
-                      width: 2.0,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF51321D),
-                        width: 2.0,
-                      )
-                  )
-              ),
-              obscureText: true, // Hide password
-            ),
-          ),
-          Padding( padding: EdgeInsets.symmetric(vertical: 8.0),),
-        ],
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Obx(() => Stack(
+      body: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/login_register.png'),
+                image: AssetImage(login_register),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-
-          if (controller.isLoading.value)
-            Center(child: CircularProgressIndicator())
-          else
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Card(
-                child: Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Row(
-                          children: [
-                            IconButton(
-                              icon: Icon(Icons.arrow_back),
-                              onPressed: () {
-                                Get.back();
+          Padding(
+            padding: EdgeInsets.only(top: screenHeight * 0.05, bottom: screenHeight * 0.05, left: screenWidth * 0.05, right: screenWidth * 0.05),
+            child: Card(
+              child: Column(
+                children: [
+                  Stack(
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.arrow_back),
+                            onPressed: () {
+                              Get.back();
                               },
-                            ),
-                          ],
-                        ),
-
-                        icon(),
-
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 18.0),
-                      child: Text(
-                        "STATIONATOR",
-                        style: TextStyle(
-                          fontFamily: 'Lato',
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
+                          ),
+                        ],
                       ),
-                    ),
-                    text(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      padding : EdgeInsets.only(bottom: 16.0),
-                      child : ElevatedButton(
-                        onPressed: () {
-                          controller.Register();
-                          Get.toNamed("/home");
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF51321D),
-                          minimumSize: Size(270, 48),
-                        ),
-                        child: Text(
-                          'Register',
-                          style: TextStyle(
-                              color: Colors.white
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: screenHeight * 0.050),
+                          child: Positioned(
+                            bottom: screenHeight * 0.10,
+                            child: Image.asset(
+                              icon,
+                              height: screenHeight * 0.110,
+                            ),
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: screenHeight * 0.009),
+                      child: Text(
+                        "STATIONARY",
+                        style: titleText,
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: screenHeight * 0.016)),
+                  Text(
+                      "Create Your Account",
+                      style: defaultText
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.023),
+                      child: myForm(context, Icons.account_box, 'Name', false, TextInputType.name, controller.cName)
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.023),
+                      child: myForm(context, Icons.account_circle, 'Username', false, TextInputType.text, controller.cUsername)
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.023),
+                      child: myForm(context, Icons.email, 'Email', false, TextInputType.emailAddress, controller.cEmail)
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.023),
+                    child: Obx(() {
+                      return myPassword(
+                        context,
+                        Icons.lock,
+                        'Password',
+                        controller.passwordObscure.value,
+                        TextInputType.visiblePassword,
+                        controller.cPass,
+                            () {
+                          controller.togglePasswordVisibility();
+                        },
+                      );
+                    }),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: screenHeight * 0.016),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        controller.Register();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: primaryTextColor,
+                        minimumSize: Size(screenWidth * 0.77, screenHeight * 0.070),
+                      ),
+                      child: Text(
+                        'Register',
+                        style: TextStyle(color: primaryColor),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
+          ),
         ],
-      )),
+      ),
     );
   }
-
 }
