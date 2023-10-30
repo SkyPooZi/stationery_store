@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                   ),
 
                   Positioned(
-                    top: 330.0,
+                    top: 300.0,
                     left: 16.0,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,16 +83,17 @@ class HomePage extends StatelessWidget {
                         Text(
                           "BE SMART BE SHARP",
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 32,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Lato',
                             color: Colors.white,
                           ),
                         ),
+                        
                         Text(
                           "BE THE BEST",
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 32,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'ItalicLato',
                             color: Colors.white,
