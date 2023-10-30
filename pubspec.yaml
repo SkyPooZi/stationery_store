@@ -37,7 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   http: ^1.1.0
-  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +69,14 @@ flutter:
     - assets/icon.png
     - assets/headerBackground.png
     - assets/catalogBackground.png
+    - assets/backButton.png
+    - assets/chatIcon.png
+    - assets/cartIcon.png
+    - assets/bookBackground.png
+    - assets/homeIcon.png
+    - assets/brownHomeIcon.png
+    - assets/navbarLine.png
+    - assets/profile.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
