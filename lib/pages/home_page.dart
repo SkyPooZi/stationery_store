@@ -89,7 +89,6 @@ class HomePage extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-
                         Text(
                           "BE THE BEST",
                           style: TextStyle(
@@ -104,12 +103,74 @@ class HomePage extends StatelessWidget {
                   ),
 
                   image(context),
-
                 ],
               )
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+Widget image(BuildContext context){
+
+  final screenWidth = MediaQuery.of(context).size.width;
+
+  return Positioned(
+    top: 300,
+    child: Image.asset(
+      'assets/catalogBackground.png',
+      width: screenWidth,
+      height: 455,
+    ),
+  );
+}
+
+class BubbleNavbar extends StatefulWidget {
+  @override
+  _BubbleNavbarState createState() => _BubbleNavbarState();
+}
+
+class _BubbleNavbarState extends State<BubbleNavbar> {
+  int selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> items = ['All', 'Recommended', 'Stationery', 'Book', 'Utensils', 'Others'];
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: items.asMap().entries.map((entry) {
+          final int index = entry.key;
+          final String item = entry.value;
+          final isSelected = index == selectedIndex;
+
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10), // Increase vertical padding
+              decoration: BoxDecoration(
+                color: isSelected ? Color(0xFF51321D) : Colors.transparent,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(
+                child: Text(
+                  item,
+                  style: TextStyle(
+                    color: isSelected ? Colors.white : Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          );
+        }).toList(),
       ),
     );
   }
