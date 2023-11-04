@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stationery_store/routes/route_name.dart';
 
+import '../controllers/splash_screen_controller.dart';
 import '../helper/themes.dart';
 
-class SplashScreen extends StatelessWidget {
-  SplashScreen() {
-    Future.delayed(Duration(seconds: 3), () {
-      Get.offNamed(RouteName.login);
-    });
-  }
+class SplashScreen extends GetView<SplashScreenController> {
+  SplashScreenController splashscreencontroller = Get.put(SplashScreenController());
 
   @override
   Widget build(BuildContext context) {

@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   http: ^1.1.0
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
@@ -65,18 +66,19 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - assets/login_register.png
-    - assets/icon.png
-    - assets/headerBackground.png
-    - assets/catalogBackground.png
-    - assets/backButton.png
-    - assets/chatIcon.png
-    - assets/cartIcon.png
-    - assets/bookBackground.png
-    - assets/homeIcon.png
-    - assets/brownHomeIcon.png
-    - assets/navbarLine.png
-    - assets/profile.png
+    - assets/
+#    - assets/login_register.png
+#    - assets/icon.png
+#    - assets/headerBackground.png
+#    - assets/catalogBackground.png
+#    - assets/backButton.png
+#    - assets/chatIcon.png
+#    - assets/cartIcon.png
+#    - assets/bookBackground.png
+#    - assets/homeIcon.png
+#    - assets/brownHomeIcon.png
+#    - assets/navbarLine.png
+#    - assets/profile.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

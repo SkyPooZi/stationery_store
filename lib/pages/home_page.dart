@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -59,11 +59,11 @@ class HomePage extends StatelessWidget {
                 children: [
                   Container(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 16.0),
+                      padding: EdgeInsets.only(top: screenHeight * 0.025),
                       child: Image.asset(
                         'assets/headerBackground.png',
                         width: screenWidth,
-                        height: 455,
+                        height: screenHeight * 0.7,
                       ),
                     ),
                   ),
@@ -116,76 +116,14 @@ class HomePage extends StatelessWidget {
 Widget image(BuildContext context){
 
   final screenWidth = MediaQuery.of(context).size.width;
+  final screenHeight = MediaQuery.of(context).size.height;
 
   return Positioned(
-    top: 300,
+    top: screenHeight * 0.4,
     child: Image.asset(
       'assets/catalogBackground.png',
       width: screenWidth,
-      height: 455,
-    ),
-  );
-}
-
-class BubbleNavbar extends StatefulWidget {
-  @override
-  _BubbleNavbarState createState() => _BubbleNavbarState();
-}
-
-class _BubbleNavbarState extends State<BubbleNavbar> {
-  int selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    final List<String> items = ['All', 'Recommended', 'Stationery', 'Book', 'Utensils', 'Others'];
-
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: items.asMap().entries.map((entry) {
-          final int index = entry.key;
-          final String item = entry.value;
-          final isSelected = index == selectedIndex;
-
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10), // Increase vertical padding
-              decoration: BoxDecoration(
-                color: isSelected ? Color(0xFF51321D) : Colors.transparent,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Center(
-                child: Text(
-                  item,
-                  style: TextStyle(
-                    color: isSelected ? Colors.white : Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
-}
-
-Widget image(BuildContext context){
-
-  final screenWidth = MediaQuery.of(context).size.width;
-
-  return Positioned(
-    top: 300,
-    child: Image.asset(
-      'assets/catalogBackground.png',
-      width: screenWidth,
-      height: 455,
+      height: screenHeight,
     ),
   );
 }
