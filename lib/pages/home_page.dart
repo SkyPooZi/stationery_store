@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../helper/themes.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -9,101 +11,222 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset('assets/icon.png', width: 24, height: 24),
-        ),
-        title: Align(
-          alignment: Alignment.centerLeft,
-          child: Container(
+        backgroundColor: Colors.transparent,
+        actions: <Widget>[
+          Container(
+            width: screenWidth,
+            padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4.0),
-              border: Border.all(
-                color: Color(0xFF51321D),
-                width: 2.0,
+              color: primaryColor,
+              borderRadius: BorderRadius.circular(8),
+            ),
+
+            child: TextFormField(
+              cursorColor: primaryTextColor,
+              decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.search, color: primaryTextColor,
+                ),
+                hintText: "eg : Pensil",
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: primaryTextColor, width: 2.0)
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: primaryTextColor, width: 2.0)
+                )
+              ),
+              style: TextStyle(
+                color: primaryTextColor,
+                fontFamily: 'Lato',
               ),
             ),
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 4.0),
-                ),
-                Expanded(
-                  child: TextFormField(
-                    cursorColor: Color(0xFF51321D),
-                    decoration: InputDecoration(
-                      hintText: "eg: Pensil",
-                      border: InputBorder.none, // Remove the border from the input field
-                    ),
-                    style: TextStyle(
-                      color: Color(0xFF51321D),
-                      fontFamily: 'Lato',
-                    ),
-                  ),
-                ),
-                Icon(Icons.search, color: Color(0xFF51321D)),
-              ],
-            ),
           ),
-        ),
+          SizedBox(height: 16,),
+        ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          width: screenWidth,
-          height: screenHeight,
-          child: ListView(
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 16.0),
-                      child: Image.asset(
-                        'assets/headerBackground.png',
-                        width: screenWidth,
-                        height: 455,
-                      ),
+
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.vertical(bottom: Radius.circular(30))),
+                  padding : EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text("Welcome To",style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Poppins',
+                      color: Colors.black87,
+                    ),),
+
+                    SizedBox(
+                      height: 5,
                     ),
-                  ),
 
-                  Column(
-                    children: [
-                      BubbleNavbar(),
-                    ],
-                  ),
+                    Text(
+                      "Stationator",
+                      style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w900,
+                      fontFamily: 'Poppins',
+                      color: primaryTextColor,
+                    ),),
 
-                  Positioned(
-                    top: 300.0,
-                    left: 16.0,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    Column(
                       children: [
-                        Text(
-                          "BE SMART BE SHARP",
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Lato',
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          "BE THE BEST",
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'ItalicLato',
-                            color: Colors.white,
-                          ),
-                        ),
+                        SizedBox(height: 16.0,),
+                        BubbleNavbar(),
+                        SizedBox(height: 16.0,)
                       ],
                     ),
-                  ),
 
-                  image(context),
-                ],
+
+
+                    Row(
+                      children: [
+                        Text(
+                            "Best Seller",
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Lato',
+                              color: primaryTextColor,
+                            ),
+                          ),
+
+                       Container(
+                         width : screenWidth * 0.68,
+                         child : Align(
+                           alignment: Alignment.centerRight,
+                           child: Text(
+                             "See All",
+                             style: TextStyle(
+                               fontSize: 15,
+                               fontWeight: FontWeight.bold,
+                               fontFamily: 'Lato',
+                               color: primaryTextColor,
+                             ),
+                           ),
+                         ),
+                       )
+                      ],
+                    ),
+
+                    Container(
+                      height: 220,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          sellerCard('assets/faberCastle.jpg', 'Faber Castle'),
+                          sellerCard('assets/pinkNoteBook.jpg', 'Pinky Notes'),
+                          sellerCard('assets/silverPen.jpg', 'Silvery Pen'),
+                          sellerCard('assets/stationerySet.jpg', 'School Set'),
+                          sellerCard('assets/marker.jpg', 'Board Marker'),
+                          sellerCard('assets/etc2.jpg', 'ETC.'),
+                        ],
+                      ),
+                    ),
+
+                    Container(
+                      padding: EdgeInsets.only(top: 22),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Category",
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Lato',
+                              color: primaryTextColor,
+                            ),
+                          ),
+
+                          Container(
+                            width : screenWidth * 0.7,
+                            child : Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                "See All",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Lato',
+                                  color: primaryTextColor,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+
+                    Container(
+                      margin: EdgeInsets.only(top: 30),
+                      height: 220,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          categoryCard('assets/brownPen.jpg', 'Pen'),
+                          categoryCard('assets/brownBook.jpg', 'Book'),
+                          categoryCard('assets/brownNoteBook.jpg', 'Note Book'),
+                          categoryCard('assets/brownScissors.jpg', 'Scissors'),
+                          categoryCard('assets/brownFileFolder.jpg', 'File Folder'),
+                          categoryCard('assets/etc.jpg', 'ETC.'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+
+              Padding(
+                padding: EdgeInsets.only(top: 37),
+                child: Container(
+                  color: Color(0xFFC19475), // Background color
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                        icon: Image.asset('assets/brownHomeIcon.png',width: 20, color: Colors.white),
+                        onPressed: () {
+                          // Navigate to the home screen or perform an action.
+                        },
+                      ),
+                      IconButton(
+                        icon: Image.asset('assets/cartIcon.png',width: 20, color: Colors.white),
+                        onPressed: () {
+                          // Navigate to the business screen or perform an action.
+                        },
+                      ),
+                      IconButton(
+                        icon: Image.asset('assets/chatIcon.png',width: 20, color: Colors.white),
+                        onPressed: () {
+                          // Navigate to the school screen or perform an action.
+                        },
+                      ),
+                      IconButton(
+                        icon: Image.asset('assets/profile.png', width: 25),
+                        onPressed: () {
+                          // Navigate to the school screen or perform an action.
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               )
             ],
           ),
@@ -113,82 +236,78 @@ class HomePage extends StatelessWidget {
   }
 }
 
-Widget image(BuildContext context){
-
-  final screenWidth = MediaQuery.of(context).size.width;
-
-  return Positioned(
-    top: 300,
-    child: Image.asset(
-      'assets/catalogBackground.png',
-      width: screenWidth,
-      height: 455,
-    ),
-  );
-}
-
-class BubbleNavbar extends StatefulWidget {
-  @override
-  _BubbleNavbarState createState() => _BubbleNavbarState();
-}
-
-class _BubbleNavbarState extends State<BubbleNavbar> {
-  int selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    final List<String> items = ['All', 'Recommended', 'Stationery', 'Book', 'Utensils', 'Others'];
-
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: items.asMap().entries.map((entry) {
-          final int index = entry.key;
-          final String item = entry.value;
-          final isSelected = index == selectedIndex;
-
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10), // Increase vertical padding
-              decoration: BoxDecoration(
-                color: isSelected ? Color(0xFF51321D) : Colors.transparent,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Center(
-                child: Text(
-                  item,
-                  style: TextStyle(
-                    color: isSelected ? Colors.white : Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          );
-        }).toList(),
+Widget categoryCard(image, text) {
+  return AspectRatio(
+    aspectRatio: 1 / 1,
+    child: Container(
+      margin: EdgeInsets.only(right: 15.0, top: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(image)),
       ),
-    );
-  }
-}
-
-Widget image(BuildContext context){
-
-  final screenWidth = MediaQuery.of(context).size.width;
-
-  return Positioned(
-    top: 300,
-    child: Image.asset(
-      'assets/catalogBackground.png',
-      width: screenWidth,
-      height: 455,
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(100),
+            gradient: LinearGradient(begin: Alignment.bottomRight, stops: [
+              0.1,
+              0.9
+            ], colors: [
+              Colors.black.withOpacity(0.8),
+              Colors.black.withOpacity(0.1)
+            ])),
+        child: Padding(
+          padding: EdgeInsets.only(top: 160),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 22,
+              fontFamily: 'Poppins',
+              color: primaryColor,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
     ),
   );
 }
+Widget sellerCard(image, text) {
+  return AspectRatio(
+    aspectRatio: 2.68 / 3,
+    child: Container(
+      margin: EdgeInsets.only(right: 15.0, top: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(image)),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            gradient: LinearGradient(begin: Alignment.bottomRight, stops: [
+              0.1,
+              0.9
+            ], colors: [
+              Colors.black.withOpacity(.8),
+              Colors.black.withOpacity(.1)
+            ])),
+        child: Padding(
+          padding: EdgeInsets.only(top: 160),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 22,
+              fontFamily: 'Poppins',
+              color: primaryColor,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+
 
 class BubbleNavbar extends StatefulWidget {
   @override
@@ -217,7 +336,7 @@ class _BubbleNavbarState extends State<BubbleNavbar> {
               });
             },
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10), // Increase vertical padding
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8), // Increase vertical padding
               decoration: BoxDecoration(
                 color: isSelected ? Color(0xFF51321D) : Colors.transparent,
                 borderRadius: BorderRadius.circular(8),
