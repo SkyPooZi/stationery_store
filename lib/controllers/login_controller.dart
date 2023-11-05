@@ -30,10 +30,10 @@ class LoginController extends GetxController {
     prefs = await SharedPreferences.getInstance();
     final baseUrl = 'https://mediadwi.com/api/latihan/login';
     final response = await http.post(
-        Uri.parse(baseUrl),
-        body:{
-          "username" :  cUsername?.text,
-          "password" :  cPass?.text,
+      Uri.parse(baseUrl),
+      body:{
+        "username" :  cUsername?.text,
+        "password" :  cPass?.text,
       },
     );
 

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../helper/themes.dart';
 
 class HomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -45,6 +45,7 @@ class HomePage extends StatelessWidget {
           SizedBox(height: 16,),
         ],
       ),
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -68,23 +69,6 @@ class HomePage extends StatelessWidget {
 
                     SizedBox(
                       height: 5,
-
-      body: SingleChildScrollView(
-        child: Container(
-          width: screenWidth,
-          height: screenHeight,
-          child: ListView(
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: screenHeight * 0.025),
-                      child: Image.asset(
-                        'assets/headerBackground.png',
-                        width: screenWidth,
-                        height: screenHeight * 0.7,
-                      ),
                     ),
 
                     Text(
@@ -251,6 +235,7 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
 Widget categoryCard(image, text) {
   return AspectRatio(
     aspectRatio: 1 / 1,
@@ -283,17 +268,6 @@ Widget categoryCard(image, text) {
           ),
         ),
       ),
-Widget image(BuildContext context){
-
-  final screenWidth = MediaQuery.of(context).size.width;
-  final screenHeight = MediaQuery.of(context).size.height;
-
-  return Positioned(
-    top: screenHeight * 0.4,
-    child: Image.asset(
-      'assets/catalogBackground.png',
-      width: screenWidth,
-      height: screenHeight,
     ),
   );
 }
@@ -380,9 +354,6 @@ class _BubbleNavbarState extends State<BubbleNavbar> {
           );
         }).toList(),
       ),
-    );
-  }
-}
     );
   }
 }
