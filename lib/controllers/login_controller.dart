@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../routes/route_name.dart';
 
 class LoginController extends GetxController {
+  late final SharedPreferences prefs;
   TextEditingController? cUsername;
   TextEditingController? cPass;
   RxBool passwordObscure = true.obs;
@@ -25,6 +27,7 @@ class LoginController extends GetxController {
   }
 
   void Login() async {
+    prefs = await SharedPreferences.getInstance();
     final baseUrl = 'https://mediadwi.com/api/latihan/login';
     final response = await http.post(
         Uri.parse(baseUrl),
@@ -43,6 +46,7 @@ class LoginController extends GetxController {
           final token = getData["token"];
           final message = getData["message"];
           print("Token : $token");
+          await prefs.setString('token', token);
           Get.snackbar(
             "Success",
             "$message",

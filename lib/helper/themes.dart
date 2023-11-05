@@ -5,6 +5,7 @@ const Color primaryColor = Colors.white;
 const Color secondaryColor = Color(0xFFE6E6E6);
 const Color primaryTextColor = Color(0xFF51321D);
 const Color secondTextColor = Color(0xFFC19475);
+const Color lineColor = Colors.black87;
 
 //FONT STYLES INITIAL
 
@@ -13,6 +14,22 @@ TextStyle buttonStyle({required final color}) {
           color: color,
           fontWeight: FontWeight.w600,
           fontSize: 12
+      );
+}
+
+TextStyle textChatting() {
+      return TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.w700,
+            fontFamily: 'Lato',
+      );
+}
+
+TextStyle textNoChat() {
+      return TextStyle(
+            fontFamily: 'Lato',
+            fontWeight: FontWeight.w900,
+            fontSize: 18,
       );
 }
 
