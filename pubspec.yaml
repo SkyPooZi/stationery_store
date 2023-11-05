@@ -67,19 +67,6 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/
-#    - assets/login_register.png
-#    - assets/icon.png
-#    - assets/headerBackground.png
-#    - assets/catalogBackground.png
-#    - assets/backButton.png
-#    - assets/chatIcon.png
-#    - assets/cartIcon.png
-#    - assets/bookBackground.png
-#    - assets/homeIcon.png
-#    - assets/brownHomeIcon.png
-#    - assets/navbarLine.png
-#    - assets/profile.png
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -115,6 +102,10 @@ flutter:
        - family: ItalicLato
          fonts:
            - asset: fonts/Lato/Lato-LightItalic.ttf
+
+       - family: Poppins
+         fonts:
+            - asset: fonts/Poppins/Poppins-Black.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
