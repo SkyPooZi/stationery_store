@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stationery_store/widget/navbar_bawah.dart';
 
 import '../helper/themes.dart';
 
@@ -10,42 +11,45 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        actions: <Widget>[
-          Container(
-            width: screenWidth,
-            padding: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: primaryColor,
-              borderRadius: BorderRadius.circular(8),
-            ),
-
-            child: TextFormField(
-              cursorColor: primaryTextColor,
-              decoration: InputDecoration(
-                prefixIcon: Icon(
-                  Icons.search, color: primaryTextColor,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100),
+        child: AppBar(
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+          flexibleSpace: Column(
+            children: [
+              Container(
+                width: screenWidth,
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                hintText: "eg : Pensil",
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: primaryTextColor, width: 2.0)
+                child: TextFormField(
+                  cursorColor: primaryTextColor,
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: primaryTextColor,
+                      ),
+                      hintText: "eg : Pensil",
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: primaryTextColor, width: 2.0)),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: primaryTextColor, width: 2.0))),
+                  style: TextStyle(
+                    color: primaryTextColor,
+                    fontFamily: 'Lato',
+                  ),
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: primaryTextColor, width: 2.0)
-                )
               ),
-              style: TextStyle(
-                color: primaryTextColor,
-                fontFamily: 'Lato',
-              ),
-            ),
+              BubbleNavbar(),
+            ],
           ),
-          SizedBox(height: 16,),
-        ],
+        ),
       ),
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -54,76 +58,65 @@ class HomePage extends StatelessWidget {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: primaryColor,
-                  borderRadius: BorderRadius.vertical(bottom: Radius.circular(30))),
-                  padding : EdgeInsets.all(20.0),
+                    color: primaryColor,
+                    borderRadius:
+                        BorderRadius.vertical(bottom: Radius.circular(30))),
+                padding: EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("Welcome To",style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Poppins',
-                      color: Colors.black87,
-                    ),),
-
+                    Text(
+                      "Welcome To",
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Poppins',
+                        color: Colors.black87,
+                      ),
+                    ),
                     SizedBox(
                       height: 5,
                     ),
-
                     Text(
                       "Stationator",
                       style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                      fontFamily: 'Poppins',
-                      color: primaryTextColor,
-                    ),),
-
+                        fontSize: 32,
+                        fontWeight: FontWeight.w900,
+                        fontFamily: 'Poppins',
+                        color: primaryTextColor,
+                      ),
+                    ),
                     SizedBox(
                       height: 20,
                     ),
-
-                    Column(
-                      children: [
-                        SizedBox(height: 16.0,),
-                        BubbleNavbar(),
-                        SizedBox(height: 16.0,)
-                      ],
-                    ),
-
-
-
                     Row(
                       children: [
                         Text(
-                            "Best Seller",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Lato',
-                              color: primaryTextColor,
+                          "Best Seller",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Lato',
+                            color: primaryTextColor,
+                          ),
+                        ),
+                        Container(
+                          width: screenWidth * 0.68,
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "See All",
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Lato',
+                                color: primaryTextColor,
+                              ),
                             ),
                           ),
-
-                       Container(
-                         width : screenWidth * 0.68,
-                         child : Align(
-                           alignment: Alignment.centerRight,
-                           child: Text(
-                             "See All",
-                             style: TextStyle(
-                               fontSize: 15,
-                               fontWeight: FontWeight.bold,
-                               fontFamily: 'Lato',
-                               color: primaryTextColor,
-                             ),
-                           ),
-                         ),
-                       )
+                        )
                       ],
                     ),
-
                     Container(
                       height: 220,
                       child: ListView(
@@ -138,7 +131,6 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-
                     Container(
                       padding: EdgeInsets.only(top: 22),
                       child: Row(
@@ -152,10 +144,9 @@ class HomePage extends StatelessWidget {
                               color: primaryTextColor,
                             ),
                           ),
-
                           Container(
-                            width : screenWidth * 0.7,
-                            child : Align(
+                            width: screenWidth * 0.7,
+                            child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
                                 "See All",
@@ -171,7 +162,6 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-
                     Container(
                       margin: EdgeInsets.only(top: 30),
                       height: 220,
@@ -182,7 +172,8 @@ class HomePage extends StatelessWidget {
                           categoryCard('assets/brownBook.jpg', 'Book'),
                           categoryCard('assets/brownNoteBook.jpg', 'Note Book'),
                           categoryCard('assets/brownScissors.jpg', 'Scissors'),
-                          categoryCard('assets/brownFileFolder.jpg', 'File Folder'),
+                          categoryCard(
+                              'assets/brownFileFolder.jpg', 'File Folder'),
                           categoryCard('assets/etc.jpg', 'ETC.'),
                         ],
                       ),
@@ -190,48 +181,11 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-
-
-              Padding(
-                padding: EdgeInsets.only(top: 37),
-                child: Container(
-                  color: Color(0xFFC19475), // Background color
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      IconButton(
-                        icon: Image.asset('assets/brownHomeIcon.png',width: 20, color: Colors.white),
-                        onPressed: () {
-                          // Navigate to the home screen or perform an action.
-                        },
-                      ),
-                      IconButton(
-                        icon: Image.asset('assets/cartIcon.png',width: 20, color: Colors.white),
-                        onPressed: () {
-                          // Navigate to the business screen or perform an action.
-                        },
-                      ),
-                      IconButton(
-                        icon: Image.asset('assets/chatIcon.png',width: 20, color: Colors.white),
-                        onPressed: () {
-                          // Navigate to the school screen or perform an action.
-                        },
-                      ),
-                      IconButton(
-                        icon: Image.asset('assets/profile.png', width: 25),
-                        onPressed: () {
-                          // Navigate to the school screen or perform an action.
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              )
             ],
           ),
         ),
       ),
+      bottomNavigationBar: NavbarBawah(),
     );
   }
 }
@@ -271,6 +225,7 @@ Widget categoryCard(image, text) {
     ),
   );
 }
+
 Widget sellerCard(image, text) {
   return AspectRatio(
     aspectRatio: 2.68 / 3,
@@ -307,8 +262,6 @@ Widget sellerCard(image, text) {
   );
 }
 
-
-
 class BubbleNavbar extends StatefulWidget {
   @override
   _BubbleNavbarState createState() => _BubbleNavbarState();
@@ -319,7 +272,14 @@ class _BubbleNavbarState extends State<BubbleNavbar> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> items = ['All', 'Recommended', 'Stationery', 'Book', 'Utensils', 'Others'];
+    final List<String> items = [
+      'All',
+      'Recommended',
+      'Stationery',
+      'Book',
+      'Utensils',
+      'Others'
+    ];
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -336,7 +296,8 @@ class _BubbleNavbarState extends State<BubbleNavbar> {
               });
             },
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8), // Increase vertical padding
+              padding: EdgeInsets.symmetric(
+                  horizontal: 24, vertical: 8), // Increase vertical padding
               decoration: BoxDecoration(
                 color: isSelected ? Color(0xFF51321D) : Colors.transparent,
                 borderRadius: BorderRadius.circular(8),
