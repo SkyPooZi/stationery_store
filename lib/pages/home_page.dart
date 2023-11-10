@@ -1,4 +1,6 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:stationery_store/pages/promoCard.dart';
 import 'package:stationery_store/widget/navbar_bawah.dart';
 
 import '../helper/themes.dart';
@@ -41,7 +43,7 @@ class HomePage extends StatelessWidget {
                               BorderSide(color: primaryTextColor, width: 2.0))),
                   style: TextStyle(
                     color: primaryTextColor,
-                    fontFamily: 'Lato',
+                    fontFamily: 'LatoBold',
                   ),
                 ),
               ),
@@ -74,9 +76,6 @@ class HomePage extends StatelessWidget {
                         color: Colors.black87,
                       ),
                     ),
-                    SizedBox(
-                      height: 5,
-                    ),
                     Text(
                       "Stationator",
                       style: TextStyle(
@@ -89,6 +88,13 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
+
+                    promoCard(),
+
+                    SizedBox(
+                      height: 20,
+                    ),
+
                     Row(
                       children: [
                         Text(
@@ -144,24 +150,10 @@ class HomePage extends StatelessWidget {
                               color: primaryTextColor,
                             ),
                           ),
-                          Container(
-                            width: screenWidth * 0.7,
-                            child: Align(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                "See All",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Lato',
-                                  color: primaryTextColor,
-                                ),
-                              ),
-                            ),
-                          )
                         ],
                       ),
                     ),
+
                     Container(
                       margin: EdgeInsets.only(top: 30),
                       height: 220,
@@ -178,6 +170,7 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
+
                   ],
                 ),
               ),
@@ -282,6 +275,7 @@ class _BubbleNavbarState extends State<BubbleNavbar> {
     ];
 
     return SingleChildScrollView(
+      padding: EdgeInsets.only(top: 8, left: 8, right: 8),
       scrollDirection: Axis.horizontal,
       child: Row(
         children: items.asMap().entries.map((entry) {
