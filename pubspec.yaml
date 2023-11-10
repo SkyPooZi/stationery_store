@@ -38,6 +38,8 @@ dependencies:
   get: ^4.6.5
   http: ^1.1.0
   shared_preferences: ^2.2.2
+  carousel_slider: ^4.2.1
+  smooth_page_indicator: ^0.3.0-nullsafety.0
 
 dev_dependencies:
   flutter_test:
@@ -83,13 +85,11 @@ flutter:
        - family: Lato
          fonts:
            - asset: fonts/Lato/Lato-Black.ttf
+
+       - family: LatoBold
+         fonts:
            - asset: fonts/Lato/Lato-Bold.ttf
-           - asset: fonts/Lato/Lato-BoldItalic.ttf
-           - asset: fonts/Lato/Lato-Italic.ttf
-           - asset: fonts/Lato/Lato-Light.ttf
-           - asset: fonts/Lato/Lato-Regular.ttf
-           - asset: fonts/Lato/Lato-Thin.ttf
-           - asset: fonts/Lato/Lato-ThinItalic.ttf
+
 
        - family: NotoSerifRegular
          fonts:

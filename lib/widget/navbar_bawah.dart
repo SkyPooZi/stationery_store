@@ -11,7 +11,7 @@ class NavbarBawah extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      color: secondTextColor, // Background color
+      color: primaryTextColor,
       padding: EdgeInsets.symmetric(horizontal: screenHeight * 0.05),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
