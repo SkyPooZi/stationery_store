@@ -76,7 +76,7 @@ class ChattingPage extends StatelessWidget {
               ],
             ),
           ),
-          NavbarBawah(),
+          NavbarBawah(pressedIcon: primaryColor,)
         ],
       ),
     );
