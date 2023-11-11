@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 
 import '../routes/route_name.dart';
 
@@ -12,6 +14,7 @@ class RegisterController extends GetxController {
   TextEditingController? cPass;
   TextEditingController? cName;
   TextEditingController? cEmail;
+  var selectedImage = Rx<File?>(null);
   RxBool passwordObscure = true.obs;
 
   @override
@@ -26,6 +29,15 @@ class RegisterController extends GetxController {
 
   void togglePasswordVisibility() {
     passwordObscure.value = !passwordObscure.value;
+  }
+
+  void pickImage() async {
+    final imagePicker = ImagePicker();
+    final pickedFile = await imagePicker.pickImage(source: ImageSource.gallery, imageQuality: 50);
+
+    if (pickedFile != null) {
+      selectedImage.value = File(pickedFile.path);
+    }
   }
 
   void Register() async {
