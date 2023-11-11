@@ -5,8 +5,9 @@ import '../controllers/register_controller.dart';
 import '../helper/themes.dart';
 import '../widget/text_field.dart';
 
-class RegisterPage extends GetView<RegisterController> {
-  const RegisterPage({Key? key}) : super(key: key);
+class RegisterPage extends StatelessWidget {
+  RegisterPage({Key? key}) : super(key: key);
+  RegisterController controller = Get.find<RegisterController>();
 
   @override
   Widget build(BuildContext context) {
@@ -40,48 +41,61 @@ class RegisterPage extends GetView<RegisterController> {
                           ),
                         ],
                       ),
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: screenHeight * 0.050),
-                          child: Positioned(
-                            bottom: screenHeight * 0.10,
-                            child: Image.asset(
-                              icon,
-                              height: screenHeight * 0.110,
-                            ),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                   Center(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: screenHeight * 0.009),
-                      child: Text(
-                        "STATIONARY",
-                        style: titleText,
-                      ),
+                    child: Text(
+                      "STATIONARY",
+                      style: titleText,
                     ),
                   ),
-                  Padding(padding: EdgeInsets.only(top: screenHeight * 0.016)),
+                  Padding(padding: EdgeInsets.only(top: screenHeight * 0.001)),
                   Text(
                       "Create Your Account",
                       style: defaultText
                   ),
+                  GestureDetector(
+                    onTap: () {
+                      controller.pickImage();
+                    },
+                    child: Obx(() {
+                      return Container(
+                        width: 70,
+                        height: 70,
+                        margin: EdgeInsets.only(top: screenHeight * 0.01),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: controller.selectedImage.value != null
+                                ? FileImage(controller.selectedImage.value!)
+                                : AssetImage('assets/icon.png') as ImageProvider,
+                          ),
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.camera_alt,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
                   Padding(
-                      padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.023),
+                      padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.020),
                       child: myForm(context, Icons.account_box, 'Name', false, TextInputType.name, controller.cName)
                   ),
                   Padding(
-                      padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.023),
+                      padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.020),
                       child: myForm(context, Icons.account_circle, 'Username', false, TextInputType.text, controller.cUsername)
                   ),
                   Padding(
-                      padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.023),
+                      padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.020),
                       child: myForm(context, Icons.email, 'Email', false, TextInputType.emailAddress, controller.cEmail)
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.023),
+                    padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05, top: screenHeight * 0.020),
                     child: Obx(() {
                       return myPassword(
                         context,
@@ -100,7 +114,7 @@ class RegisterPage extends GetView<RegisterController> {
                     padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
                   ),
                   Container(
-                    padding: EdgeInsets.only(bottom: screenHeight * 0.016),
+                    padding: EdgeInsets.only(bottom: screenHeight * 0.010),
                     child: ElevatedButton(
                       onPressed: () {
                         controller.Register();

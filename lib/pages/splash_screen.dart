@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import '../controllers/splash_screen_controller.dart';
 import '../helper/themes.dart';
 
-class SplashScreen extends GetView<SplashScreenController> {
-  SplashScreenController splashscreencontroller = Get.put(SplashScreenController());
+class SplashScreen extends StatelessWidget {
+  SplashScreen({Key? key}) : super(key: key);
+  SplashScreenController controller = Get.find<SplashScreenController>();
 
   @override
   Widget build(BuildContext context) {

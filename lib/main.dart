@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.pages,
-      home: HomePage(),
     );
   }
 }

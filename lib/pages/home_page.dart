@@ -1,16 +1,20 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stationery_store/controllers/home_controller.dart';
 import 'package:stationery_store/pages/promoCard.dart';
 import 'package:stationery_store/widget/navbar_bawah.dart';
 
 import '../helper/themes.dart';
 
 class HomePage extends StatelessWidget {
+  HomePage({Key? key}) : super(key: key);
+  HomeController controller = Get.find<HomeController>();
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(

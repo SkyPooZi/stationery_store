@@ -7,8 +7,9 @@ import '../helper/themes.dart';
 import '../routes/route_name.dart';
 import '../widget/text_field.dart';
 
-class LoginPage extends GetView<LoginController> {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  LoginPage({Key? key}) : super(key: key);
+  LoginController controller = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {

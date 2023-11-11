@@ -18,8 +18,13 @@ class LoginController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
+    initializePrefs();
     cUsername = new TextEditingController();
     cPass = new TextEditingController();
+  }
+
+  void initializePrefs() async {
+    prefs = await SharedPreferences.getInstance();
   }
 
   void togglePasswordVisibility() {
@@ -27,7 +32,6 @@ class LoginController extends GetxController {
   }
 
   void Login() async {
-    prefs = await SharedPreferences.getInstance();
     final baseUrl = 'https://mediadwi.com/api/latihan/login';
     final response = await http.post(
       Uri.parse(baseUrl),
