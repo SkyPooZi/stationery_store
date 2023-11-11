@@ -16,7 +16,7 @@ class listProductBook extends StatelessWidget {
         title: Padding(
           padding : EdgeInsets.only(right: 20),
           child: Text(
-            "Best Seller",
+            "Book Category",
             style: TextStyle(
               fontSize: 20,
               fontFamily: 'LatoBold',
