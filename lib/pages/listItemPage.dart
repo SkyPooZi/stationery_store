@@ -25,7 +25,6 @@ class ListProductPage extends StatelessWidget {
       'deskripsi': 'Lorem ipsum dolor sit amet,',
       'imagePath': 'assets/promoCard1.png',
     },
-    // Add more products as needed
   ];
 
   @override
