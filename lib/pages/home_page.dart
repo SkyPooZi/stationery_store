@@ -6,6 +6,7 @@ import 'package:stationery_store/widget/navbar_bawah.dart';
 
 import '../helper/themes.dart';
 import '../widget/navbar_atas.dart';
+import '../widget/show_top_up_dialog.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -13,13 +14,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    int currency = 0;
-
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: navbarAtas(),
+      appBar: navbarAtas(selectedIndex: controller.selectedIndex.value, controller: controller.cSearchProduct, onChanged: controller.onSearchProduct),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -89,107 +87,92 @@ class HomePage extends StatelessWidget {
                               ],
                               color: thirdColor,
                             ),
-
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.all(16),
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 5.0),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-
-                                              Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons.wallet,
-                                                    color: primaryColor,
-                                                  ),
-
-                                                  Padding(
-                                                    padding: EdgeInsets.only(left: 6),
-                                                    child : Text(
-                                                      "Currency",
-                                                      style: TextStyle(
-                                                        color: primaryColor,
-                                                        fontSize: 18,
-                                                        fontWeight: FontWeight.bold,
-                                                      ),),
-                                                  ),
-
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    children: [
-                                                      Padding(
-                                                        padding: EdgeInsets.only(left: 26.95),
-                                                        child: Row(
-                                                          children: [
-                                                            Icon(Icons.credit_card,size: 30,color: primaryColor,),
-                                                            SizedBox(width: 30,),
-                                                            Image.asset('assets/plusButton.png', scale: 4/3,),
-                                                            SizedBox(width: 35,),
-                                                            Image.asset('assets/paperPlane.png', scale: 4/3,)
-                                                          ],
-                                                        )
-                                                      )
-                                                    ],
-                                                  ),
-
-                                                ],
-                                              ),
-
-                                              Padding(
-                                                padding: EdgeInsets.only(top: 5),
-                                                child : Row(
-                                                  children: [
-                                                    Text(
-                                                      "Rp. " + currency.toString(),
-                                                      style: TextStyle(
-                                                        color: primaryColor,
-                                                        fontSize: 18,
-                                                        fontWeight: FontWeight.bold,
-                                                      ),),
-
-                                                    SizedBox(width: 90,),
-
-                                                    Text(
-                                                      "Pay",
-                                                      style: TextStyle(
-                                                        color: primaryColor,
-                                                        fontSize: 16,
-                                                      ),),
-
-                                                    SizedBox(width: 17,),
-
-                                                    Text(
-                                                      "Top Up",
-                                                      style: TextStyle(
-                                                        color: primaryColor,
-                                                        fontSize: 16,
-                                                      ),),
-
-                                                    SizedBox(width: 12,),
-
-                                                    Text(
-                                                      "Send",
-                                                      style: TextStyle(
-                                                        color: primaryColor,
-                                                        fontSize: 16,
-                                                      ),),
-                                                  ],
-                                                )
-                                              ),
-                                            ],
-                                          )
+                            child: Padding(
+                              padding: EdgeInsets.all(16),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.wallet,
+                                            color: primaryColor,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(left: 6),
+                                            child : Text(
+                                              "Currency",
+                                              style: TextStyle(
+                                                color: primaryColor,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                              ),),
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 5),
+                                        child : Row(
+                                          children: [
+                                            Obx(() => Text(
+                                              "Rp. ${controller.formatCurrency(controller.currency.value)}",
+                                              style: TextStyle(
+                                                color: primaryColor,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                              ),),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                ),
-                              ],
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 20,),
+                                  Column(
+                                    children: [
+                                      Icon(Icons.credit_card,size: 30,color: primaryColor,),
+                                      Text(
+                                        "Pay",
+                                        style: TextStyle(
+                                          color: primaryColor,
+                                          fontSize: 16,
+                                        ),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 20,),
+                                  Column(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          showTopUpDialog(Get.context!, controller.topUp);
+                                        },
+                                        child: Icon(Icons.add_box_outlined,size: 30,color: primaryColor,),
+                                      ),
+                                      Text(
+                                        "Top Up",
+                                        style: TextStyle(
+                                          color: primaryColor,
+                                          fontSize: 16,
+                                        ),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 20,),
+                                  Column(
+                                    children: [
+                                      Icon(Icons.send,size: 30,color: primaryColor,),
+                                      Text(
+                                        "Send",
+                                        style: TextStyle(
+                                          color: primaryColor,
+                                          fontSize: 16,
+                                        ),),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -312,7 +295,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: NavbarBawah(pressedIcon: primaryColor,),
-
     );
   }
 }

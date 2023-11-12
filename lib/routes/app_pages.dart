@@ -1,15 +1,18 @@
 import 'package:get/get.dart';
 import 'package:stationery_store/bindings/chatting_binding.dart';
 import 'package:stationery_store/bindings/home_binding.dart';
+import 'package:stationery_store/bindings/list_binding.dart';
 import 'package:stationery_store/bindings/login_binding.dart';
 import 'package:stationery_store/bindings/register_binding.dart';
 import 'package:stationery_store/bindings/splash_screen_binding.dart';
 import 'package:stationery_store/pages/chatting_page.dart';
+import 'package:stationery_store/pages/list_page.dart';
 import 'package:stationery_store/pages/login_page.dart';
 import 'package:stationery_store/pages/register_page.dart';
 import 'package:stationery_store/pages/splash_screen.dart';
 import 'package:stationery_store/routes/route_name.dart';
 import 'package:stationery_store/pages/home_page.dart';
+
 
 class AppPages {
 
@@ -35,6 +38,11 @@ class AppPages {
       name: RouteName.home,
       page: () => HomePage(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: RouteName.list,
+      page: () => ListPage(),
+      binding: ListBinding(),
     ),
     GetPage(
       name: RouteName.chatting,

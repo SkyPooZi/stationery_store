@@ -8,6 +8,10 @@ const Color secondaryColor = Color(0xFFE6E6E6);
 const Color primaryTextColor = Color(0xFF51321D);
 const Color secondTextColor = Color(0xFFC19475);
 const Color lineColor = Colors.black87;
+const Color primaryLoadingColor = Color(0xFF2967FF);
+const Color grayColor = Color(0xFF8D8D8E);
+
+const double defaultPadding = 16.0;
 
 //FONT STYLES INITIAL
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../helper/themes.dart';
 import '../routes/route_name.dart';
@@ -31,7 +32,19 @@ Widget nav(BuildContext context,Color color){
         IconButton(
           icon: Image.asset('assets/brownHomeIcon.png',width: screenWidth * 0.07,color: color),
           onPressed: () {
-            RouteName.home;
+            Get.toNamed(RouteName.home);
+          },
+        ),
+        IconButton(
+          icon: Icon(Icons.list_alt, color: color,),
+          onPressed: () {
+            Get.toNamed(RouteName.list);
+          },
+        ),
+        IconButton(
+          icon: Image.asset('assets/profile.png', width: screenWidth * 0.1),
+          onPressed: () {
+// Navigate to the school screen or perform an action.
           },
         ),
         IconButton(
@@ -42,12 +55,6 @@ Widget nav(BuildContext context,Color color){
         ),
         IconButton(
           icon: Image.asset('assets/chatIcon.png',width: screenWidth * 0.07, color: color),
-          onPressed: () {
-// Navigate to the school screen or perform an action.
-          },
-        ),
-        IconButton(
-          icon: Image.asset('assets/profile.png', width: screenWidth * 0.1),
           onPressed: () {
 // Navigate to the school screen or perform an action.
           },
