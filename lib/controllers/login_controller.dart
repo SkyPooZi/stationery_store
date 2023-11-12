@@ -49,8 +49,10 @@ class LoginController extends GetxController {
         if (status == true) {
           final token = getData["token"];
           final message = getData["message"];
+          final password = cPass;
           print("Token : $token");
           await prefs.setString('token', token);
+          await prefs.setString('password', password.toString());
           Get.snackbar(
             "Success",
             "$message",
