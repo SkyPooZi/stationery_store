@@ -8,12 +8,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: primaryColor,
-      child: Column(
-        children: [
-
-        ],
-      ),
+        child : DetailPageImages(),
     );
   }
 }
