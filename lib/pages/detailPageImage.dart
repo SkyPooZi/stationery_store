@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:stationery_store/helper/themes.dart';
 
+import '../helper/themes.dart';
 import '../widget/buttonDetailPage.dart';
 
-class DetailPageImages extends StatefulWidget {
-
-  @override
-  State<DetailPageImages> createState() => _DetailPageImagesState();
-}
-
-class _DetailPageImagesState extends State<DetailPageImages> {
+class DetailPageImages extends StatelessWidget {
+  const DetailPageImages({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         title: Text(
           "Detail Page", style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
           fontFamily: 'Lato',
           color: primaryTextColor,
-          ),
+        ),
         ),
 
         titleSpacing: 0,
@@ -30,7 +24,7 @@ class _DetailPageImagesState extends State<DetailPageImages> {
         foregroundColor: Colors.black87,
         backgroundColor: Colors.transparent,
         leading: (
-        Icon(Icons.arrow_back_ios)
+            Icon(Icons.arrow_back_ios)
         ),
       ),
 
@@ -51,6 +45,7 @@ class _DetailPageImagesState extends State<DetailPageImages> {
                 Padding(
                   padding: EdgeInsets.only(left: 10),
                   child : Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Icon(Icons.star,color: primaryTextColor,size: 20,),
                       SizedBox(width: 6,),
@@ -64,12 +59,26 @@ class _DetailPageImagesState extends State<DetailPageImages> {
 
                       SizedBox(width: 205,),
 
-                      Text("2000 Reviews", style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Lato',
-                        color: primaryTextColor,
-                      ),),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "2000 Reviews", style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Lato',
+                            color: primaryTextColor,
+                          ),),
+
+                          Text(
+                            "Stock : 27", style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: 'NotoSerifRegular',
+                            color: primaryTextColor.withOpacity(0.95),
+                          ),),
+
+                        ],
+                      ),
 
                     ],
                   ),
@@ -108,10 +117,10 @@ class _DetailPageImagesState extends State<DetailPageImages> {
                       padding: EdgeInsets.only(left: 12),
                       child : Text("Lorem Ipsum Dolor Sit Amet",
                         style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: 'NotoSerifRegular',
-                        color: primaryTextColor,
-                      ),),
+                          fontSize: 12,
+                          fontFamily: 'NotoSerifRegular',
+                          color: primaryTextColor,
+                        ),),
                     ),
 
                     SizedBox(height: 28,),
@@ -120,11 +129,11 @@ class _DetailPageImagesState extends State<DetailPageImages> {
                       padding: EdgeInsets.only(left: 12),
                       child : Text("Other Stuff You Might Like ",
                         style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'NotoSerifRegular',
-                        color: primaryTextColor,
-                      ),),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'NotoSerifRegular',
+                          color: primaryTextColor,
+                        ),),
                     ),
 
                     Container(
@@ -206,7 +215,7 @@ class _DetailPageImagesState extends State<DetailPageImages> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        
+
                         Padding(
                           padding: EdgeInsets.only(left: 12, top: 12),
                           child : Text(
@@ -220,36 +229,36 @@ class _DetailPageImagesState extends State<DetailPageImages> {
                         ),
                       ],
                     ),
-                    
+
                     Row(
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: 9, top: 12),
-                            child : Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(Icons.photo,color: primaryTextColor, ),
+                          child : Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(Icons.photo,color: primaryTextColor, ),
 
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
 
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 6),
-                                          child : Text(
-                                            "Skypoo",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'NotoSerifRegular',
-                                              color: primaryTextColor,
-                                            ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 6),
+                                        child : Text(
+                                          "Skypoo",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: 'NotoSerifRegular',
+                                            color: primaryTextColor,
                                           ),
                                         ),
+                                      ),
 
-                                        Padding(
+                                      Padding(
                                           padding: EdgeInsets.only(left: 170),
                                           child : Row(
                                             children: [
@@ -257,24 +266,24 @@ class _DetailPageImagesState extends State<DetailPageImages> {
                                               Icon(Icons.star,color: primaryTextColor,size: 20,),
 
                                               Text(
-                                                  "Rating 4.9",
-                                                    style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontFamily: 'ItalicLato',
-                                                    fontWeight: FontWeight.bold,
-                                                    color: primaryTextColor,
+                                                "Rating 4.9",
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontFamily: 'ItalicLato',
+                                                  fontWeight: FontWeight.bold,
+                                                  color: primaryTextColor,
                                                 ),
                                               )
                                             ],
                                           )
-                                        ),
+                                      ),
 
-                                      ],
-                                    ),
+                                    ],
+                                  ),
 
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 6, bottom: 12),
-                                      child : Text(
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 6, bottom: 12),
+                                    child : Text(
                                       "dnapwofubiaipfosbf",
                                       style: TextStyle(
                                         fontSize: 14,
@@ -283,11 +292,11 @@ class _DetailPageImagesState extends State<DetailPageImages> {
                                       ),
                                     ),
 
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
 
 
@@ -312,11 +321,11 @@ class _DetailPageImagesState extends State<DetailPageImages> {
                     Text(
                       "Rp. 5000",
                       style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Lato',
-                      color: primaryColor,
-                    ),),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Lato',
+                        color: primaryColor,
+                      ),),
 
                     Row(
                       children: [
