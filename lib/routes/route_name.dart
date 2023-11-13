@@ -6,5 +6,6 @@ abstract class RouteName {
   static const list = "/list";
   static const cart = "/cart";
   static const detail = "/detail";
+  static const profile = "/profile";
   static const chatting = "/chatting";
 }

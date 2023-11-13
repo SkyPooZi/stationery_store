@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stationery_store/widget/navbar_bawah.dart';
+
+import '../helper/themes.dart';
 
 class chattingPageWithFriend extends StatelessWidget {
   const chattingPageWithFriend({Key? key}) : super(key: key);
@@ -8,13 +11,23 @@ class chattingPageWithFriend extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        title: Text(
+          "Detail Page", style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Lato',
+          color: primaryTextColor,
+        ),),
+
+        titleSpacing: 0,
         elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset('assets/backButton.png', width: 24, height: 24),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
+        leading: (
+            Icon(Icons.arrow_back_ios)
         ),
       ),
+
       body: Column(
         children: [
           Expanded(
@@ -22,12 +35,12 @@ class chattingPageWithFriend extends StatelessWidget {
               children: [
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 10, top: 20),
+                    padding: EdgeInsets.only(bottom: 10, top: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 10),
+                          padding: EdgeInsets.only(left: 10),
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
@@ -42,7 +55,7 @@ class chattingPageWithFriend extends StatelessWidget {
                         ),
                         SizedBox(height: 23),
                         Padding(
-                          padding: const EdgeInsets.only(left: 10),
+                          padding: EdgeInsets.only(left: 10),
                           child: Container(
                             height: 2,
                             width: 300,
@@ -71,7 +84,7 @@ class chattingPageWithFriend extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Row(
                                     children: [
                                       Image.asset(
@@ -136,7 +149,7 @@ class chattingPageWithFriend extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Row(
                                     children: [
                                       Image.asset(
@@ -191,39 +204,7 @@ class chattingPageWithFriend extends StatelessWidget {
             ),
           ),
 
-          Container(
-            color: Color(0xFFC19475), // Background color
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  icon: Image.asset('assets/brownHomeIcon.png',width: 20, color: Colors.white),
-                  onPressed: () {
-                    // Navigate to the home screen or perform an action.
-                  },
-                ),
-                IconButton(
-                  icon: Image.asset('assets/cartIcon.png',width: 20, color: Colors.white),
-                  onPressed: () {
-                    // Navigate to the business screen or perform an action.
-                  },
-                ),
-                IconButton(
-                  icon: Image.asset('assets/chatIcon.png',width: 20, color: Colors.white),
-                  onPressed: () {
-                    // Navigate to the school screen or perform an action.
-                  },
-                ),
-                IconButton(
-                  icon: Image.asset('assets/profile.png', width: 25),
-                  onPressed: () {
-                    // Navigate to the school screen or perform an action.
-                  },
-                ),
-              ],
-            ),
-          ),
+          NavbarBawah(pressedIcon: primaryColor )
         ],
       ),
     );
