@@ -17,11 +17,13 @@ import 'package:stationery_store/routes/route_name.dart';
 import 'package:stationery_store/pages/home_page.dart';
 
 import '../bindings/cart_binding.dart';
+import '../bindings/profile_binding.dart';
+import '../pages/profilePage.dart';
 
 
 class AppPages {
 
-  static const INITIAL = RouteName.detail;
+  static const INITIAL = RouteName.profile;
 
   static final pages = [
     GetPage(
@@ -63,6 +65,11 @@ class AppPages {
       name: RouteName.detail,
       page: () => DetailPage(),
       binding: DetailBinding(),
+    ),
+    GetPage(
+      name: RouteName.profile,
+      page: () => ProfilePage(),
+      binding: ProfileBinding(),
     ),
   ];
 }

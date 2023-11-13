@@ -42,7 +42,7 @@ Widget nav(BuildContext context,Color color){
           },
         ),
         IconButton(
-          icon: Image.asset('assets/profile.png', width: screenWidth * 0.1),
+          icon: Image.asset('assets/zee.png', width: screenWidth * 0.1),
           onPressed: () {
 // Navigate to the school screen or perform an action.
           },
