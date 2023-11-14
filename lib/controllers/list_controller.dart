@@ -35,10 +35,8 @@ class ListController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    selectedCategory.value = categories[selectedIndex.value];
     cSearchProduct = TextEditingController();
-    ever(selectedIndex, (_) {
-      filterProducts();
-    });
     fetchProduct();
   }
 
@@ -52,7 +50,7 @@ class ListController extends GetxController {
           product.name.toLowerCase().contains(cSearchProduct!.text.toLowerCase()))
           .toList();
     } else {
-      if (selectedIndex.value == 0) {
+      if (selectedCategory.value == 'All') {
         filteredProducts.assignAll(productresponsemodel);
       } else {
         filteredProducts.value = productresponsemodel
@@ -65,6 +63,13 @@ class ListController extends GetxController {
 
   void onSearchProduct(String searchText) {
     cSearchProduct?.text.obs.value = searchText;
+    filterProducts();
+  }
+
+  void onCategorySelected(int index) {
+    selectedIndex.value = index;
+    selectedCategory.value = categories[index];
+    filterProducts();
   }
 
   void fetchProduct() async {

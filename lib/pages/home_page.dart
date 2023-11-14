@@ -17,7 +17,13 @@ class HomePage extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: navbarAtas(selectedIndex: controller.selectedIndex.value, controller: controller.cSearchProduct, onChanged: controller.onSearchProduct),
+      appBar: NavbarAtas(
+        controller: controller.cSearchProduct,
+        onChanged: controller.onSearchProduct,
+        categories: controller.categories,
+        selectedCategory: controller.selectedCategory,
+        onCategorySelected: controller.onCategorySelected,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

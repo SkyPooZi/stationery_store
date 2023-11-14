@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,22 +5,44 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/list_model.dart';
-import '../routes/route_name.dart';
 
 class HomeController extends GetxController {
   RxList<ProductResponseModel> productresponsemodel = <ProductResponseModel>[].obs;
   late final SharedPreferences prefs;
-  TextEditingController? cSearchProduct;
+  TextEditingController? cTopUp;
   var isLoading = true.obs;
   RxInt currency = 0.obs;
   RxString strPass = "".obs;
+
+  TextEditingController? cSearchProduct;
   RxInt selectedIndex = 0.obs;
-  TextEditingController? cTopUp;
+  RxString selectedCategory = "".obs;
+
+  final List<String> categories = [
+    'All',
+    'Recommended',
+    'Amplop',
+    'Penjepit Kertas',
+    'Buku',
+    'Pemotong',
+    'Kertas',
+    'Isolasi',
+    'Lem Perekat',
+    'Map',
+    'Alat Ukur',
+    'Alat Tulis',
+    'Penghapus',
+    'Aksesoris Komputer',
+    'Pendamping Fotocopy',
+    'Sticky Noted',
+    'Pendamping ATK',
+  ];
 
   @override
   void onInit() {
     // TODO: implement onInit
     initializePrefs();
+    selectedCategory.value = categories[selectedIndex.value];
     fetchProduct();
     super.onInit();
   }
@@ -33,6 +53,11 @@ class HomeController extends GetxController {
 
   void onSearchProduct(String searchText) {
     cSearchProduct?.text.obs.value = searchText;
+  }
+
+  void onCategorySelected(int index) {
+    selectedIndex.value = index;
+    selectedCategory.value = categories[index];
   }
 
   void fetchProduct () async {
