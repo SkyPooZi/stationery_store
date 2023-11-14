@@ -18,7 +18,13 @@ class ListPage extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: navbarAtas(selectedIndex: controller.selectedIndex.value, controller: controller.cSearchProduct, onChanged: controller.onSearchProduct),
+      appBar: NavbarAtas(
+        controller: controller.cSearchProduct,
+        onChanged: controller.onSearchProduct,
+        categories: controller.categories,
+        selectedCategory: controller.selectedCategory,
+        onCategorySelected: controller.onCategorySelected,
+      ),
       body: Container(
         color: primaryColor,
         child: Obx(() => controller.isLoading.value
@@ -28,6 +34,7 @@ class ListPage extends StatelessWidget {
                 separatorBuilder: (context, index) =>
                 const SizedBox(height: defaultPadding),
               )
+
             : ListView.builder(
               itemCount: controller.filteredProducts.value.length,
               itemBuilder: (context, index) {
