@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:stationery_store/profileDirectory/Controller/profile_controller.dart';
 
 import '../../helper/themes.dart';
+import '../../routes/route_name.dart';
 import '../../widget/navbar_bawah.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -70,14 +71,22 @@ class ProfilePage extends StatelessWidget {
 
                     Padding(
                       padding: EdgeInsets.only(left: 34),
-                      child: Obx(() => Text(
-                          controller.strName.value,style: TextStyle(
+                      child: Obx(() => controller.strName.value.isNotEmpty
+                          ? Text(
+                          controller.strUsername.value,style: TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.w700,
                             fontFamily: 'Lato',
                             color: primaryTextColor,
                             decoration: TextDecoration.none
-                        ),),
+                        ),)
+                          : Text("Admin",style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Lato',
+                          color: primaryTextColor,
+                          decoration: TextDecoration.none
+                      ),),
                       ),
                     ),
 
@@ -107,100 +116,118 @@ class ProfilePage extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text("Birthday : 16 Mei 2004",style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'Lato',
-                              color: primaryTextColor.withOpacity(0.7),
-                              decoration: TextDecoration.none
-                          ),),
+                          Obx(() => controller.strName.value.isNotEmpty
+                              ? Text("Full Name : ${controller.strName.value}",style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'Lato',
+                                color: primaryTextColor.withOpacity(0.7),
+                                decoration: TextDecoration.none
+                            ),)
+                              : Text("Full Name : Admin",style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'Lato',
+                                color: primaryTextColor.withOpacity(0.7),
+                                decoration: TextDecoration.none
+                            ),),
+                          ),
                         ],
                       ),
                     ),
 
                     SizedBox(height: 16,),
 
-
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: primaryColor,
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                              color: primaryTextColor.withOpacity(0.25),
-                              spreadRadius: 3,
-                              blurRadius: 5,
-                              offset: Offset(3,4)
-                          ),
-                        ],
-                      ),
-
-                      child: Padding(
-                        padding: EdgeInsets.all(14.0),
-                        child: Row(
-                          children: [
-                            Icon(Icons.account_box, color : primaryTextColor),
-
-                            SizedBox(width: 6,),
-
-                            Text("Account", style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Lato',
-                                color: primaryTextColor,
-                                decoration: TextDecoration.none
-                            ),),
-
-                            SizedBox(width: 190,),
-
-                            Icon(Icons.arrow_forward_ios, color: primaryTextColor)
-
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(RouteName.account);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                        decoration: BoxDecoration(
+                          color: primaryColor,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                                color: primaryTextColor.withOpacity(0.25),
+                                spreadRadius: 3,
+                                blurRadius: 5,
+                                offset: Offset(3,4)
+                            ),
                           ],
                         ),
-                      ),
 
+                        child: Padding(
+                          padding: EdgeInsets.all(14.0),
+                          child: Row(
+                            children: [
+                              Icon(Icons.account_box, color : primaryTextColor),
+
+                              SizedBox(width: 6,),
+
+                              Text("Account", style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Lato',
+                                  color: primaryTextColor,
+                                  decoration: TextDecoration.none
+                              ),),
+
+                              SizedBox(width: 190,),
+
+                              Icon(Icons.arrow_forward_ios, color: primaryTextColor)
+
+                            ],
+                          ),
+                        ),
+
+                      ),
                     ),
 
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: primaryColor,
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                              color: primaryTextColor.withOpacity(0.25),
-                              spreadRadius: 3,
-                              blurRadius: 5,
-                              offset: Offset(3,4)
-                          ),
-                        ],
-                      ),
-
-                      child: Padding(
-                        padding: EdgeInsets.all(14.0),
-                        child: Row(
-                          children: [
-                            Icon(Icons.privacy_tip_outlined, color : primaryTextColor),
-
-                            SizedBox(width: 6,),
-
-                            Text("Privacy & Policy", style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Lato',
-                                color: primaryTextColor,
-                                decoration: TextDecoration.none
-                            ),),
-
-                            SizedBox(width: 140,),
-
-                            Icon(Icons.arrow_forward_ios, color: primaryTextColor)
-
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(RouteName.privacy);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                        decoration: BoxDecoration(
+                          color: primaryColor,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                                color: primaryTextColor.withOpacity(0.25),
+                                spreadRadius: 3,
+                                blurRadius: 5,
+                                offset: Offset(3,4)
+                            ),
                           ],
                         ),
-                      ),
 
+                        child: Padding(
+                          padding: EdgeInsets.all(14.0),
+                          child: Row(
+                            children: [
+                              Icon(Icons.privacy_tip_outlined, color : primaryTextColor),
+
+                              SizedBox(width: 6,),
+
+                              Text("Privacy & Policy", style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Lato',
+                                  color: primaryTextColor,
+                                  decoration: TextDecoration.none
+                              ),),
+
+                              SizedBox(width: 140,),
+
+                              Icon(Icons.arrow_forward_ios, color: primaryTextColor)
+
+                            ],
+                          ),
+                        ),
+
+                      ),
                     ),
 
                     SizedBox(height: 12,),
