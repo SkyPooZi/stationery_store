@@ -73,6 +73,8 @@ class RegisterController extends GetxController {
           print("Token : $message");
           await prefs.setString('username', cUsername?.text ?? '');
           await prefs.setString('password', cPass?.text ?? '');
+          await prefs.setString('name', cName?.text ?? '');
+          await prefs.setString('email', cEmail?.text ?? '');
           Get.snackbar(
             "Success",
             "$message",
