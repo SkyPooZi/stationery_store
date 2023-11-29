@@ -15,6 +15,7 @@ class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    final containerHeight = 200.0;
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -40,7 +41,9 @@ class ListPage extends StatelessWidget {
               itemCount: controller.filteredProducts.value.length,
               itemBuilder: (context, index) {
                 final product = controller.filteredProducts[index];
+
                 return Container(
+                  height: containerHeight ,
                   margin: EdgeInsets.symmetric(vertical: 18, horizontal: 16),
                   decoration: BoxDecoration(
                     color: thirdColor,
@@ -51,7 +54,7 @@ class ListPage extends StatelessWidget {
                         spreadRadius: 3,
                         blurRadius: 5,
                           offset: Offset(3,4)
-                      )
+                      ),
                     ]
                   ),
 
@@ -67,13 +70,13 @@ class ListPage extends StatelessWidget {
                           child: Image.network(
                             product.image,
                             width: 130,
-                            height: 220,
+                            height: containerHeight,
                             fit: BoxFit.fill,
                           ),
                         ),
                       ),
 
-                      SizedBox(width: 18),
+                      SizedBox(width: 12),
 
                       Padding(
                         padding: EdgeInsets.only(top: 12),
@@ -117,7 +120,6 @@ class ListPage extends StatelessWidget {
                               "Stock : " + product.stock.toString(),
                               style: TextStyle(
                                 fontSize: 12,
-                                fontWeight: FontWeight.bold,
                                 color: primaryColor,
                               ),
                             ),
@@ -139,8 +141,8 @@ class ListPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  child : TextButton(
-                                    onPressed: () {
+                                  child : GestureDetector(
+                                    onTap: () {
                                       if (controller.filteredProducts.isNotEmpty && index < controller.filteredProducts.length) {
                                         print("Selected index: $index");
                                         controller.goToDetailPage(index);
@@ -158,20 +160,6 @@ class ListPage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
-
-                                Padding(
-                                  padding: EdgeInsets.only(left: 20, right: 5),
-                                  child: Text(
-                                    "Add To Cart",
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      color: primaryColor.withOpacity(0.7),
-                                    ),
-                                  ),
-                                )
-
                               ],
                             )
 
