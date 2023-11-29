@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../profileDirectory/Controller/profile_controller.dart';
 import '../helper/themes.dart';
 import '../routes/route_name.dart';
 
@@ -19,6 +22,8 @@ class NavbarBawah extends StatelessWidget {
 }
 
 Widget nav(BuildContext context,Color color){
+
+  ProfileController controller = Get.put(ProfileController());
 
   final screenWidth = MediaQuery.of(context).size.width;
   final screenHeight = MediaQuery.of(context).size.height;
@@ -42,21 +47,25 @@ Widget nav(BuildContext context,Color color){
           },
         ),
         IconButton(
-          icon: Image.asset('assets/zee.png', width: screenWidth * 0.1),
+          icon: Obx(() =>
+          controller.selectedImage.value.isNotEmpty
+              ? Image.file(File(controller.selectedImage.value),width: screenWidth * 0.07,)
+              : Image.asset(profile_icon, width: screenWidth * 0.07,)
+          ),
           onPressed: () {
-// Navigate to the school screen or perform an action.
+            Get.toNamed(RouteName.profile);
           },
         ),
         IconButton(
           icon: Image.asset('assets/cartIcon.png',width: screenWidth * 0.07, color: color),
           onPressed: () {
-// Navigate to the business screen or perform an action.
+            Get.toNamed(RouteName.cart);
           },
         ),
         IconButton(
           icon: Image.asset('assets/chatIcon.png',width: screenWidth * 0.07, color: color),
           onPressed: () {
-// Navigate to the school screen or perform an action.
+            Get.toNamed(RouteName.chatting);
           },
         ),
       ],

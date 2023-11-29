@@ -57,3 +57,4 @@ TextStyle textField = TextStyle(
 //IMAGE ASSETS
 String icon = 'assets/icon.png';
 String login_register = 'assets/login_register.png';
+String profile_icon = 'assets/zee.png';

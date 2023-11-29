@@ -1,29 +1,29 @@
 import 'package:get/get.dart';
-import 'package:stationery_store/bindings/chatting_binding.dart';
-import 'package:stationery_store/bindings/detail_binding.dart';
-import 'package:stationery_store/bindings/home_binding.dart';
-import 'package:stationery_store/bindings/list_binding.dart';
-import 'package:stationery_store/bindings/login_binding.dart';
-import 'package:stationery_store/bindings/register_binding.dart';
-import 'package:stationery_store/bindings/splash_screen_binding.dart';
-import 'package:stationery_store/pages/cartPage.dart';
-import 'package:stationery_store/pages/chatting_page.dart';
-import 'package:stationery_store/pages/detailPage.dart';
-import 'package:stationery_store/pages/list_page.dart';
-import 'package:stationery_store/pages/login_page.dart';
-import 'package:stationery_store/pages/register_page.dart';
-import 'package:stationery_store/pages/splash_screen.dart';
+import 'package:stationery_store/chattingDirectory/Binding/chatting_binding.dart';
+import 'package:stationery_store/detailDirectory/Binding/detail_binding.dart';
+import 'package:stationery_store/homeDirectory/Binding/home_binding.dart';
+import 'package:stationery_store/listDirectory/Binding/list_binding.dart';
+import 'package:stationery_store/loginDirectory/Binding/login_binding.dart';
+import 'package:stationery_store/registerDirectory/Binding/register_binding.dart';
+import 'package:stationery_store/splashDirectory/Binding/splash_screen_binding.dart';
+import 'package:stationery_store/cartDirectory/View/cartPage.dart';
+import 'package:stationery_store/chattingDirectory/View/chatting_page.dart';
+import 'package:stationery_store/detailDirectory/View/detailPage.dart';
+import 'package:stationery_store/listDirectory/View/list_page.dart';
+import 'package:stationery_store/loginDirectory/View/login_page.dart';
+import 'package:stationery_store/registerDirectory/View/register_page.dart';
+import 'package:stationery_store/splashDirectory/View/splash_screen.dart';
 import 'package:stationery_store/routes/route_name.dart';
-import 'package:stationery_store/pages/home_page.dart';
+import 'package:stationery_store/homeDirectory/View/home_page.dart';
 
-import '../bindings/cart_binding.dart';
-import '../bindings/profile_binding.dart';
-import '../pages/profilePage.dart';
+import '../cartDirectory/Binding/cart_binding.dart';
+import '../profileDirectory/Binding/profile_binding.dart';
+import '../profileDirectory/View/profilePage.dart';
 
 
 class AppPages {
 
-  static const INITIAL = RouteName.profile;
+  static const INITIAL = RouteName.splash;
 
   static final pages = [
     GetPage(
@@ -52,16 +52,6 @@ class AppPages {
       binding: ListBinding(),
     ),
     GetPage(
-      name: RouteName.cart,
-      page: () => CartPage(),
-      binding: CartBinding(),
-    ),
-    GetPage(
-      name: RouteName.chatting,
-      page: () => ChattingPage(),
-      binding: ChattingBinding(),
-    ),
-    GetPage(
       name: RouteName.detail,
       page: () => DetailPage(),
       binding: DetailBinding(),
@@ -70,6 +60,16 @@ class AppPages {
       name: RouteName.profile,
       page: () => ProfilePage(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: RouteName.cart,
+      page: () => CartPage(),
+      binding: CartBinding(),
+    ),
+    GetPage(
+      name: RouteName.chatting,
+      page: () => ChattingPage(),
+      binding: ChattingBinding(),
     ),
   ];
 }
