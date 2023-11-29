@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:stationery_store/chattingDirectory/View/chattingDetailPageNara.dart';
 import 'package:stationery_store/widget/navbar_bawah.dart';
 
 import '../../helper/themes.dart';
+import 'chattingDetailPageJustin.dart';
 
 class ChattingPage extends StatelessWidget {
+  const ChattingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
         backgroundColor: primaryColor,
         elevation: 0,
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
+        leading: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: IconButton(onPressed:(){
             Get.back();
-            },
+          },icon : Icon(Icons.arrow_back_ios, color: primaryTextColor),
           ),
         ),
+      ),
       body: Column(
         children: [
           Expanded(
@@ -29,46 +32,175 @@ class ChattingPage extends StatelessWidget {
               children: [
                 Container(
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: screenHeight * 0.005, top: screenHeight * 0.005),
+                    padding: EdgeInsets.only(bottom: 10, top: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(left: screenWidth * 0.05),
+                          padding: EdgeInsets.only(left: 10),
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               "Chatting With You",
-                              style: textChatting(),
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'Lato',
+                              ),
                             ),
                           ),
                         ),
-                        SizedBox(height: screenHeight * 0.025),
+                        SizedBox(height: 10),
                         Padding(
-                          padding: EdgeInsets.only(left: screenWidth * 0.05),
+                          padding: EdgeInsets.only(left: 10),
                           child: Container(
-                            height: screenHeight * 0.003,
-                            width: screenWidth * 0.700,
+                            height: 2,
+                            width: 300,
                             decoration: BoxDecoration(
-                              color: lineColor,
+                              color: Colors.black87,
                               borderRadius: BorderRadius.circular(2),
                             ),
                           ),
                         ),
-                        SizedBox(height: screenHeight * 0.05),
+                        SizedBox(height: 10),
+
                         Center(
                           child: Stack(
                             children: [
-                              Image.asset('assets/bookBackground.png'),
+                              Container(
+                                  width: 362,
+                                  height: 102,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.white)
+                              ),
+
+                              Card(
+                                elevation: 8,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    Get.to(() => chattingDetailPageJustin());
+                                  },
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/chattingProfilePictureJustin.png",
+                                        width: 63,
+                                        height: 75,
+                                      ),
+                                      SizedBox(width: 10), // Add space between the image and text
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Justin",
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w800,
+                                            ),
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Text(
+                                            "Lorem ipsum dolor sit amet, consectet",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),),
+
                               Positioned(
-                                top: screenHeight * 0.3,
-                                left: screenHeight * 0.05,
+                                top: 27,
+                                right: 15,
                                 child: Text(
-                                  "You don't have anyone to talk to yet",
-                                  textAlign: TextAlign.center,
-                                  style: textNoChat(),
+                                  "Yesterday",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),)
+                            ],
+                          ),
+                        ),
+
+                        SizedBox(height: 15,),
+
+                        Center(
+                          child: Stack(
+                            children: [
+                              Container(
+                                  width: 362,
+                                  height: 102,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.white)
+                              ),
+
+                              Card(
+                                elevation: 8,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    Get.to(() => chattingDetailPageNara());
+                                  },
+                                  child : Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: [
+                                        Image.asset(
+                                          "assets/chattingProfilePictureNara.png",
+                                          width: 63,
+                                          height: 75,
+                                        ),
+                                        SizedBox(width: 10), // Add space between the image and text
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Nara",
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w800,
+                                              ),
+                                            ),
+                                            SizedBox(height: 10,),
+                                            Text(
+                                              "Lorem ipsum dolor sit amet, consectet",
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
+                              Positioned(
+                                top: 27,
+                                right: 15,
+                                child: Text(
+                                  "19.40 PM",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),)
                             ],
                           ),
                         ),
@@ -81,7 +213,7 @@ class ChattingPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: NavbarBawah(pressedIcon: primaryColor,),
+      bottomNavigationBar: NavbarBawah(pressedIcon: primaryColor),
     );
   }
 }

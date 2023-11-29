@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stationery_store/cartDirectory/Controller/cart_controller.dart';
+import 'package:stationery_store/paymentPage/View/paymentPage.dart';
+import 'package:stationery_store/splashOrderDirectory/View/splashOrder.dart';
 import '../../helper/themes.dart';
 import '../../widget/navbar_atas_cart.dart';
 import '../../widget/navbar_bawah.dart';
@@ -38,12 +40,15 @@ class CartPage extends StatelessWidget {
                   ),
                 )),
               ),
+
               SizedBox(height: 6),
+
               Container(
                 height: 2,
                 color: Colors.black.withOpacity(0.7),
                 width: screenWidth,
               ),
+
               Padding(
                 padding: EdgeInsets.only(left: 14, top: 10, bottom: 10),
                 child: Obx(() => Text(
@@ -58,6 +63,7 @@ class CartPage extends StatelessWidget {
               ),
             ],
           ),
+
           Expanded(
             child: Obx(() => controller.filteredProducts.isEmpty
                 ? Center(
@@ -137,16 +143,19 @@ class CartPage extends StatelessWidget {
                                 color: primaryColor,
                               ),
                             ),
+
                             SizedBox(height: 12,),
+
                             Row(
                               children: [
                                 Container(
+                                  width : 30,
                                   decoration: BoxDecoration(
                                       color: darkerPrimaryTextColor.withOpacity(0.7),
                                       shape: BoxShape.circle
                                   ),
                                   child: IconButton(
-                                    icon: Icon(Icons.remove, color: primaryColor,),
+                                    icon: Icon(Icons.remove, color: primaryColor,size: 15,),
                                     onPressed: () {
                                       controller.decreaseQuantity(productData);
                                     },
@@ -159,14 +168,17 @@ class CartPage extends StatelessWidget {
                                   fontFamily: 'Lato',
                                   color: primaryColor,
                                 ),),
+
                                 SizedBox(width: 12,),
+
                                 Container(
+                                  width : 30,
                                   decoration: BoxDecoration(
                                       color: darkerPrimaryTextColor.withOpacity(0.7),
                                       shape: BoxShape.circle
                                   ),
                                   child: IconButton(
-                                    icon: Icon(Icons.add, color: primaryColor,),
+                                    icon: Icon(Icons.add, color: primaryColor,size: 15,),
                                     onPressed: () {
                                       controller.increaseQuantity(productData);
                                     },
@@ -209,13 +221,45 @@ class CartPage extends StatelessWidget {
                         fontFamily: 'Lato',
                         color: primaryColor,
                       ),),
+                    
                     ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: darkerPrimaryTextColor
-                      ),
-                      child: Text("Make Order"),
-                    ),
+                        onPressed: (){
+                          Get.dialog(
+                            AlertDialog(
+                             content: Center(
+                               child: paymentPage(),
+                             ),
+                            )
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                        backgroundColor: darkerPrimaryTextColor,
+                        ),
+                        child: Text("Make Order") )
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     Get.dialog(
+                    //       AlertDialog(
+                    //         backgroundColor: primaryColor,
+                    //         content: Center(
+                    //           child: Column(
+                    //             mainAxisSize: MainAxisSize.min,
+
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     );
+                    //
+                    //     // Close the AlertDialog after 3 seconds
+                    //     Future.delayed(Duration(seconds: 3), () {
+                    //       Get.back(); // Dismiss the dialog
+                    //     });
+                    //   },
+                    //   style: ElevatedButton.styleFrom(
+                    //     backgroundColor: darkerPrimaryTextColor,
+                    //   ),
+                    //   child: Text("Make Order"),
+                    // ),
                   ],
                 )),
               ],

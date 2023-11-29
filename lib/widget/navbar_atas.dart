@@ -60,19 +60,22 @@ class NavbarAtas extends StatelessWidget implements PreferredSizeWidget {
                       onCategorySelected(index);
                       print(selectedCategory.value);
                     },
-                    child: Container(
-                      padding:
-                      EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: isSelected ? thirdColor : Colors.transparent,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          category,
-                          style: TextStyle(
-                            color: isSelected ? Colors.white : Colors.black,
-                            fontWeight: FontWeight.bold,
+                    child: Padding(
+                      padding: EdgeInsets.only(left : 8.0),
+                      child: Container(
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: isSelected ? thirdColor : Colors.transparent,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Center(
+                          child: Text(
+                            category,
+                            style: TextStyle(
+                              color: isSelected ? Colors.white : Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
