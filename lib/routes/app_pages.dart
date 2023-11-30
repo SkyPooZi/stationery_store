@@ -28,7 +28,7 @@ import '../profileDirectory/View/profilePage.dart';
 
 class AppPages {
 
-  static const INITIAL = RouteName.home;
+  static const INITIAL = RouteName.login;
 
   static final pages = [
     GetPage(
