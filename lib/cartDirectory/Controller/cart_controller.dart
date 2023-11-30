@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../routes/route_name.dart';
+
 class CartController extends GetxController {
   RxList<Map<String, dynamic>> cartItems = <Map<String, dynamic>>[].obs;
   RxList<Map<String, dynamic>> filteredProducts = <Map<String, dynamic>>[].obs;
@@ -104,9 +106,11 @@ class CartController extends GetxController {
   String calculateTotalPrice() {
     int totalPrice = 0;
     for (final productData in cartItems) {
-      final int quantity = productData['quantity'] ?? 1;
-      final int price = productData['price'] ?? 0;
-      totalPrice += quantity * price;
+      if (productData['status'] == 'Your Cart') {
+        final int quantity = productData['quantity'] ?? 1;
+        final int price = productData['price'] ?? 0;
+        totalPrice += quantity * price;
+      }
     }
     return totalPrice.toString();
   }
@@ -118,4 +122,21 @@ class CartController extends GetxController {
     filterProducts();
     update();
   }
+
+  void payment() {
+    if (filteredProducts.isEmpty) {
+      Get.snackbar('Error', 'Your Cart is Empty');
+    } else {
+      final List<Map<String, dynamic>> onGoingProducts = filteredProducts.toList();
+      var pricePayment = calculateTotalPrice();
+      cartItems.removeWhere((item) => item['status'] == 'Your Cart');
+      onGoingProducts.forEach((product) {
+        product['status'] = 'On Going';
+      });
+      cartItems.addAll(onGoingProducts);
+      Get.toNamed(RouteName.payment, arguments: pricePayment);
+      filterProducts();
+    }
+  }
+
 }

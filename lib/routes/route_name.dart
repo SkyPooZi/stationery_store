@@ -8,6 +8,7 @@ abstract class RouteName {
   static const detail = "/detail";
   static const profile = "/profile";
   static const chatting = "/chatting";
+  static const payment = "/payment";
   static const account = "/account";
   static const privacy = "/privacy";
 }

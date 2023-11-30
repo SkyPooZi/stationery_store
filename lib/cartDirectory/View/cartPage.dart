@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stationery_store/cartDirectory/Controller/cart_controller.dart';
 import 'package:stationery_store/paymentPage/View/paymentPage.dart';
-import 'package:stationery_store/splashOrderDirectory/View/splashOrder.dart';
 import '../../helper/themes.dart';
 import '../../widget/navbar_atas_cart.dart';
 import '../../widget/navbar_bawah.dart';
@@ -224,42 +223,13 @@ class CartPage extends StatelessWidget {
                     
                     ElevatedButton(
                         onPressed: (){
-                          Get.dialog(
-                            AlertDialog(
-                             content: Center(
-                               child: paymentPage(),
-                             ),
-                            )
-                          );
+                          controller.payment();
                         },
                         style: ElevatedButton.styleFrom(
                         backgroundColor: darkerPrimaryTextColor,
                         ),
-                        child: Text("Make Order") )
-                    // ElevatedButton(
-                    //   onPressed: () {
-                    //     Get.dialog(
-                    //       AlertDialog(
-                    //         backgroundColor: primaryColor,
-                    //         content: Center(
-                    //           child: Column(
-                    //             mainAxisSize: MainAxisSize.min,
-
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     );
-                    //
-                    //     // Close the AlertDialog after 3 seconds
-                    //     Future.delayed(Duration(seconds: 3), () {
-                    //       Get.back(); // Dismiss the dialog
-                    //     });
-                    //   },
-                    //   style: ElevatedButton.styleFrom(
-                    //     backgroundColor: darkerPrimaryTextColor,
-                    //   ),
-                    //   child: Text("Make Order"),
-                    // ),
+                        child: Text("Make Order")
+                    ),
                   ],
                 )),
               ],
