@@ -5,14 +5,13 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/list_model.dart';
+import '../../routes/route_name.dart';
 
 class HomeController extends GetxController {
   RxList<ProductResponseModel> productresponsemodel = <ProductResponseModel>[].obs;
   late final SharedPreferences prefs;
   TextEditingController? cTopUp;
-  var isLoading = true.obs;
   RxInt currency = 0.obs;
-  RxString strPass = "".obs;
 
   TextEditingController? cSearchProduct;
   RxInt selectedIndex = 0.obs;
@@ -42,7 +41,6 @@ class HomeController extends GetxController {
     // TODO: implement onInit
     initializePrefs();
     selectedCategory.value = categories[selectedIndex.value];
-    fetchProduct();
     super.onInit();
   }
 
@@ -51,34 +49,18 @@ class HomeController extends GetxController {
   }
 
   void onSearchProduct(String searchText) {
-    cSearchProduct?.text.obs.value = searchText;
+    Get.toNamed(RouteName.list);
   }
 
   void onCategorySelected(int index) {
-    selectedIndex.value = index;
-    selectedCategory.value = categories[index];
+    Get.toNamed(RouteName.list);
   }
 
-  void fetchProduct () async {
-    try{
-      final response = await http.get(
-          Uri.parse('https://stationery-api.000webhostapp.com/api/stationery-api/')
-      );
-      if(response.statusCode == 200){
-        productresponsemodel.value = productResponseModelFromJson(response.body);
-        isLoading(false);
-      } else {
-        print('Error: ${response.statusCode}');
-      }
-    } catch (e){
-      print(e);
-    }
-  }
-
-  void topUp(String amount) {
+  void topUp(String amount) async {
     try {
       int topUpAmount = int.parse(amount);
       currency += topUpAmount;
+      await prefs.setString('currency', currency.toString());
     } catch (e) {
       print('Error parsing amount: $e');
     }

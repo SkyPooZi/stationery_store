@@ -4,6 +4,7 @@ import 'package:stationery_store/homeDirectory/Controller/home_controller.dart';
 import 'package:stationery_store/widget/navbar_bawah.dart';
 
 import '../../helper/themes.dart';
+import '../../routes/route_name.dart';
 import '../../widget/navbar_atas.dart';
 import '../../widget/promoCard.dart';
 import '../../widget/show_top_up_dialog.dart';
@@ -199,17 +200,22 @@ class HomePage extends StatelessWidget {
                                 ),
                               ),
 
-                              Container(
-                                width: screenWidth * 0.72,
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    "See All",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Lato',
-                                      color: primaryTextColor,
+                              GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(RouteName.list);
+                                },
+                                child: Container(
+                                  width: screenWidth * 0.72,
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      "See All",
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Lato',
+                                        color: primaryTextColor,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -222,16 +228,21 @@ class HomePage extends StatelessWidget {
                       padding: EdgeInsets.only(left: 8),
                       child: Container(
                         height: 220,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            sellerCard('assets/faberCastle.jpg', 'Faber Castle'),
-                            sellerCard('assets/pinkNoteBook.jpg', 'Pinky Notes'),
-                            sellerCard('assets/silverPen.jpg', 'Silvery Pen'),
-                            sellerCard('assets/stationerySet.jpg', 'School Set'),
-                            sellerCard('assets/marker.jpg', 'Board Marker'),
-                            sellerCard('assets/etc2.jpg', 'ETC.'),
-                          ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(RouteName.list);
+                          },
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: <Widget>[
+                              sellerCard('assets/faberCastle.jpg', 'Faber Castle'),
+                              sellerCard('assets/pinkNoteBook.jpg', 'Pinky Notes'),
+                              sellerCard('assets/silverPen.jpg', 'Silvery Pen'),
+                              sellerCard('assets/stationerySet.jpg', 'School Set'),
+                              sellerCard('assets/marker.jpg', 'Board Marker'),
+                              sellerCard('assets/etc2.jpg', 'ETC.'),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -252,17 +263,22 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
 
-                            Container(
-                              width: screenWidth * 0.72,
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  "See All",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Lato',
-                                    color: primaryTextColor,
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed(RouteName.list);
+                              },
+                              child: Container(
+                                width: screenWidth * 0.72,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    "See All",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Lato',
+                                      color: primaryTextColor,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -278,17 +294,22 @@ class HomePage extends StatelessWidget {
                       child: Container(
                         margin: EdgeInsets.only(top: 8, bottom: 16),
                         height: 220,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            categoryCard('assets/brownPen.jpg', 'Pen'),
-                            categoryCard('assets/brownBook.jpg', 'Book'),
-                            categoryCard('assets/brownNoteBook.jpg', 'Note Book'),
-                            categoryCard('assets/brownScissors.jpg', 'Scissors'),
-                            categoryCard(
-                                'assets/brownFileFolder.jpg', 'File Folder'),
-                            categoryCard('assets/etc.jpg', 'ETC.'),
-                          ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(RouteName.list);
+                          },
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: <Widget>[
+                              categoryCard('assets/brownPen.jpg', 'Pen'),
+                              categoryCard('assets/brownBook.jpg', 'Book'),
+                              categoryCard('assets/brownNoteBook.jpg', 'Note Book'),
+                              categoryCard('assets/brownScissors.jpg', 'Scissors'),
+                              categoryCard(
+                                  'assets/brownFileFolder.jpg', 'File Folder'),
+                              categoryCard('assets/etc.jpg', 'ETC.'),
+                            ],
+                          ),
                         ),
                       ),
                     ),

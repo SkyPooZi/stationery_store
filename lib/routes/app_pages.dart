@@ -6,6 +6,8 @@ import 'package:stationery_store/detailDirectory/Binding/detail_binding.dart';
 import 'package:stationery_store/homeDirectory/Binding/home_binding.dart';
 import 'package:stationery_store/listDirectory/Binding/list_binding.dart';
 import 'package:stationery_store/loginDirectory/Binding/login_binding.dart';
+import 'package:stationery_store/paymentPage/Binding/payment_binding.dart';
+import 'package:stationery_store/paymentPage/View/paymentPage.dart';
 import 'package:stationery_store/privacyDirectory/View/privacyPage.dart';
 import 'package:stationery_store/registerDirectory/Binding/register_binding.dart';
 import 'package:stationery_store/splashDirectory/Binding/splash_screen_binding.dart';
@@ -73,6 +75,11 @@ class AppPages {
       name: RouteName.chatting,
       page: () => ChattingPage(),
       binding: ChattingBinding(),
+    ),
+    GetPage(
+      name: RouteName.payment,
+      page: () => PaymentPage(),
+      binding: PaymentBinding(),
     ),
     GetPage(
       name: RouteName.account,

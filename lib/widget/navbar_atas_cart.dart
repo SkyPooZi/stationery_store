@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../helper/themes.dart';
+import '../routes/route_name.dart';
 
 class NavbarAtasCart extends StatelessWidget implements PreferredSizeWidget {
   final List<String> categories;
@@ -35,7 +36,7 @@ class NavbarAtasCart extends StatelessWidget implements PreferredSizeWidget {
                 IconButton(
                   icon: Icon(Icons.arrow_back_ios),
                   onPressed: () {
-                    Get.back();
+                    Get.offNamed(RouteName.home);
                   },
                 ),
                 SizedBox(width: 8),

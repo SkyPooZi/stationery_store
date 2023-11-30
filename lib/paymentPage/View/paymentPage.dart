@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stationery_store/helper/themes.dart';
-import 'package:stationery_store/homeDirectory/View/home_page.dart';
-import 'package:stationery_store/splashOrderDirectory/View/splashOrder.dart';
+import 'package:stationery_store/paymentPage/Controller/payment_controller.dart';
 
+import '../../routes/route_name.dart';
 import '../../widget/checkbox.dart';
+import '../../widget/paymentList.dart';
 
-class paymentPage extends StatelessWidget {
-
+class PaymentPage extends StatelessWidget {
+  PaymentPage({Key? key}) : super(key: key);
+  PaymentController controller = Get.put(PaymentController());
+  final pricePayment = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +55,12 @@ class paymentPage extends StatelessWidget {
                       fontSize: 14,
                       fontFamily: 'Lato',
                     ),),
-                    Text("Rp. ",style: TextStyle(
-                      color: primaryTextColor,
-                      fontSize: 12,
-                      fontFamily: 'Lato',
-                    ), )
+                    Obx(() => Text("Rp. ${controller.intCurrency.toString()}",style: TextStyle(
+                        color: primaryTextColor,
+                        fontSize: 12,
+                        fontFamily: 'Lato',
+                      ), ),
+                    )
                   ],
                 ),
 
@@ -82,11 +86,11 @@ class paymentPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Price", style: TextStyle(
-                    color: primaryTextColor,
-                    fontSize: 14,
-                    fontFamily: 'Lato',
-                  ),),
+                  Text("Rp. ${pricePayment}", style: TextStyle(
+                      color: primaryTextColor,
+                      fontSize: 14,
+                      fontFamily: 'Lato',
+                    ),),
 
                   ElevatedButton(onPressed: () {
                     Get.dialog(
@@ -98,7 +102,7 @@ class paymentPage extends StatelessWidget {
                               Icon(
                                 Icons.check,
                                 size: 200,
-                                color: Colors.green, // Change icon color as needed
+                                color: Colors.green,
                               ),
                               SizedBox(height: 20),
                               Text(
@@ -115,7 +119,7 @@ class paymentPage extends StatelessWidget {
                       )
                     );
                     Future.delayed(Duration(seconds: 3), () {
-                      Get.off(() => HomePage());
+                      Get.offNamed(RouteName.cart);
                     });
                   },style: ElevatedButton.styleFrom(
                     backgroundColor: primaryTextColor,
@@ -129,23 +133,4 @@ class paymentPage extends StatelessWidget {
     ),],),
     );
   }
-}
-
-Widget paymentList (image, String title){
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Image.asset(image, width: 50,),
-
-      SizedBox(width: 12,),
-
-      Text(title, style: TextStyle(
-        color: primaryTextColor,
-        fontSize: 14,
-        fontFamily: 'Lato',
-      ),),
-
-      checkboxPayment()
-    ],
-  );
 }
